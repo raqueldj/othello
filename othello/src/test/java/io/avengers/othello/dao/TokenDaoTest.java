@@ -10,10 +10,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.avengers.othello.IntegrationTest;
 import io.avengers.othello.domain.Token;
 import io.avengers.othello.jpa.EmFactory;
 
-public class TokenDaoTest {
+public class TokenDaoTest implements IntegrationTest{
 
 	EntityManager em;
 	TokenDao dao;
