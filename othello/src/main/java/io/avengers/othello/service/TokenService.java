@@ -32,5 +32,8 @@ public class TokenService {
 		tokenDao.delete(t);
 	}
 	
+	public Token findById(int id){
+		return tokenDao.findById(id);
+	}
 	
 }

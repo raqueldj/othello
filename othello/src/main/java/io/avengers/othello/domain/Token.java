@@ -13,13 +13,19 @@ public class Token {
 	private Boolean isWhite;
 	private int x;
 	private int y;
+	private Game game;
 	
-	public Token(Integer id, Boolean isWhite, int x, int y) {
+	public Token(){
+		
+	}
+	
+	public Token(Integer id, Boolean isWhite, int x, int y, Game game) {
 		super();
 		this.id = id;
 		this.isWhite = isWhite;
 		this.x = x;
 		this.y = y;
+		this.game = game;
 	}
 
 	public Boolean getIsWhite() {
@@ -49,5 +55,15 @@ public class Token {
 	public int getId() {
 		return id;
 	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	
 	
 }
