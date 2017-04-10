@@ -27,6 +27,14 @@ public class Game {
 	public Game(){
 		
 	}
+	
+
+	public Game(Integer id, List<User> users, boolean isRunning) {
+		this.id = id;
+		this.users = users;
+		this.isRunning = isRunning;
+	}
+
 
 	public Integer getId() {
 		return id;
