@@ -22,12 +22,15 @@ public class Game {
 	@JoinTable(name = "USER_GAME", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
 	private List<User> users;
 	
-	private boolean isRunning=false;
+	private boolean isRunning=true;
 	
 	public Game(){
 		
 	}
 	
+	public Game(List<User> users){
+		this.users = users;
+	}
 
 	public Game(Integer id, List<User> users, boolean isRunning) {
 		this.id = id;

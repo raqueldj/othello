@@ -28,6 +28,10 @@ public class User {
 	
 	public User() {
 	}
+	
+	public User(String name){
+		this.name = name;
+	}
 
 	public User(Integer id, String name, String passWord, int gameWin, int gameLose/*, List<Game> game*/) {
 		super();
