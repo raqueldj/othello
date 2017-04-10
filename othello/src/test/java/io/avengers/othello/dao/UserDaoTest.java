@@ -11,10 +11,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.avengers.othello.IntegrationTest;
 import io.avengers.othello.domain.User;
 import io.avengers.othello.jpa.EmFactory;
 
-public class UserDaoTest {
+public class UserDaoTest implements IntegrationTest {
 	
 	User user = new User(1, "bartac", "pass", 5, 5);
 	
