@@ -21,8 +21,8 @@ public class User {
 	private String passWord;
 	int gameWin;
 	int gameLose;
-	
-	/*@ManyToMany
+	/*
+	@ManyToMany
 	@JoinTable(name = "USER_GAME", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
 	private List<Game> game;*/
 	

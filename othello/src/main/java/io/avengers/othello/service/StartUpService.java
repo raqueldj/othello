@@ -22,7 +22,7 @@ public class StartUpService {
 	@PostConstruct
 	void after() {
 		System.out.println("====================AFTER STARTUP=======================");
-		createData();
+		//createData();
 	}
 
 	void createData() {
@@ -32,7 +32,7 @@ public class StartUpService {
 		users.add(bob);
 		users.add(jack);
 		
-		Game game = new Game(users);
+		Game game = new Game(bob,jack);
 		
 		em.persist(bob);
 		em.persist(jack);

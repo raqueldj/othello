@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Game {
@@ -18,9 +18,11 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id = null;
 	
-	@ManyToMany
-	@JoinTable(name = "USER_GAME", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-	private List<User> users;
+	@OneToOne
+	private User whiteUser;
+	
+	@OneToOne
+	private User blackUser;
 	
 	private boolean isRunning=true;
 	
@@ -28,13 +30,15 @@ public class Game {
 		
 	}
 	
-	public Game(List<User> users){
-		this.users = users;
+	public Game(User whiteUser,User blackUser){
+		this.whiteUser = whiteUser;
+		this.blackUser=blackUser;
 	}
 
-	public Game(Integer id, List<User> users, boolean isRunning) {
+	public Game(Integer id, User whiteUser, User blackUser, boolean isRunning) {
 		this.id = id;
-		this.users = users;
+		this.whiteUser = whiteUser;
+		this.blackUser=blackUser;
 		this.isRunning = isRunning;
 	}
 
@@ -47,12 +51,22 @@ public class Game {
 		this.id = id;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	
+
+	public User getWhiteUser() {
+		return whiteUser;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setWhiteUser(User whiteUser) {
+		this.whiteUser = whiteUser;
+	}
+
+	public User getBlackUser() {
+		return blackUser;
+	}
+
+	public void setBlackUser(User blackUser) {
+		this.blackUser = blackUser;
 	}
 
 	public boolean isRunning() {
@@ -67,9 +81,10 @@ public class Game {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((blackUser == null) ? 0 : blackUser.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (isRunning ? 1231 : 1237);
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
+		result = prime * result + ((whiteUser == null) ? 0 : whiteUser.hashCode());
 		return result;
 	}
 
@@ -82,6 +97,11 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
+		if (blackUser == null) {
+			if (other.blackUser != null)
+				return false;
+		} else if (!blackUser.equals(other.blackUser))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -89,13 +109,14 @@ public class Game {
 			return false;
 		if (isRunning != other.isRunning)
 			return false;
-		if (users == null) {
-			if (other.users != null)
+		if (whiteUser == null) {
+			if (other.whiteUser != null)
 				return false;
-		} else if (!users.equals(other.users))
+		} else if (!whiteUser.equals(other.whiteUser))
 			return false;
 		return true;
 	}
+
 	
 	
 	
