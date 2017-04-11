@@ -1,5 +1,7 @@
 package io.avengers.othello.dao;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.persistence.EntityManager;
 
 import org.junit.After;
@@ -14,6 +16,7 @@ import io.avengers.othello.jpa.EmFactory;
 public class UserDaoTest implements IntegrationTest {
 	
 	User user = new User("bartac", "pass", 5, 5);
+	User user2 = new User("clementine");
 
 	EntityManager em;
 	UserDao dao;
@@ -42,9 +45,22 @@ public class UserDaoTest implements IntegrationTest {
 		em.getTransaction().begin();
 		dao.create(user);
 
-		//assertTrue(user.getId() > 0);
+		assertTrue(user.getId() > 0);
+		
+		dao.delete(user.getId());
 		
 		em.getTransaction().commit();
+	}
+	
+	@Test
+	public void update(){
+		em.getTransaction().begin();
+		em.persist(user);
+		
+		dao.update(user.getId(), user2);
+		em.getTransaction().commit();
+		
+		assertTrue(user.getName().equals("clementine"));
 	}
 
 }

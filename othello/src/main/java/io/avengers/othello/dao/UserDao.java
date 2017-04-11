@@ -22,4 +22,19 @@ public class UserDao {
 		em.remove(u);
 	}
 	
+	public User update(Integer id, User uUp){
+		User u = em.find(User.class, id);
+		
+		if(uUp.getGameLose() != 0)
+			u.setGameLose(uUp.getGameLose());
+		if(uUp.getGameWin() != 0)
+			u.setGameWin(uUp.getGameWin());
+		if(!uUp.getName().isEmpty())
+			u.setName(uUp.getName());
+		if(uUp.getPassWord() != null)
+			u.setPassWord(uUp.getPassWord());
+		
+		return u;
+	}
+	
 }

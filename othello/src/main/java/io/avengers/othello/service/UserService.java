@@ -31,4 +31,9 @@ public class UserService {
     public void deleteUser(Integer id){
     	dao.delete(id);
     }
+    
+    public User updateUser(Integer id, User user){
+    	User u = dao.update(id, user);
+		return u;
+    }
 }
