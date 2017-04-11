@@ -14,8 +14,8 @@ public class User {
 	
 	private String name;
 	private String passWord;
-	private int gameWin;
-	private int gameLose;
+	private int gameWin=0;
+	private int gameLose=0;
 	
 	public User() {
 	}
@@ -29,6 +29,11 @@ public class User {
 		this.passWord = passWord;
 		this.gameWin = gameWin;
 		this.gameLose = gameLose;
+	}
+	
+	public User(String name,String passWord){
+		this.name = name;
+		this.passWord = passWord;
 	}
 
 

@@ -13,7 +13,7 @@ public class Token {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id = null;
 	
-	private Boolean isWhite;
+	private Boolean isWhite=true;
 	private int x;
 	private int y;
 	

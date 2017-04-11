@@ -25,6 +25,11 @@ public class TokenDao {
 		return token;
 	}
 	
+	public void updateTokenSwitch(Integer id){
+		Token t=em.find(Token.class, id);
+		t.setIsWhite(!t.getIsWhite());
+	}
+	
 	public void delete(Token token){
 		em.remove(token);
 	}
