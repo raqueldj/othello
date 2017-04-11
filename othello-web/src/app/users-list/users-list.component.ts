@@ -13,9 +13,6 @@ export class UsersListComponent {
   constructor(private dataService: DataService) {
 
     this.dataService.getUsers().then(users => this.users = users);
-
-
   }
-
   users: User[];
 }
