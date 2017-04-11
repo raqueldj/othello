@@ -3,12 +3,16 @@ package io.avengers.othello.service;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import io.avengers.othello.dao.TokenDao;
 import io.avengers.othello.domain.Token;
 
+@Stateless
+@Named
 public class TokenService {
 
 	TokenDao tokenDao;

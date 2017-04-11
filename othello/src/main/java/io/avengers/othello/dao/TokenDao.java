@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import io.avengers.othello.domain.Game;
 import io.avengers.othello.domain.Token;
 
 public class TokenDao {
@@ -35,9 +36,10 @@ public class TokenDao {
 	}
 	
 	public List<Token> findByGame(int id){
-		String query="SELECT t from Token WHERE t.game_id=:id";
+		Game game=em.find(Game.class, id);
+		String query="SELECT t from Token t WHERE t.game=:game";
 		return em.createQuery(query,Token.class)
-				.setParameter("id", id)
+				.setParameter("game", game)
 				.getResultList();
 				
 	}
