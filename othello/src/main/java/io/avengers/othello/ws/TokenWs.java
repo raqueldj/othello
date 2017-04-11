@@ -31,7 +31,7 @@ public class TokenWs {
 	}
 	
 	@GET
-	@Path("{id}")
+	@Path("/game/{id}")
 	public List<Token> findByGame(@PathParam("id") int id){
 		return tokenService.findByGame(id);
 	}

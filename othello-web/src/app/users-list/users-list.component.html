@@ -1,3 +1,5 @@
-<p>
-  users-list works!
-</p>
+
+<div *ngFor="let user of users">
+  {{user.name}}
+  <input [(ngModel)]='user.name' />
+</div>

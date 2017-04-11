@@ -17,6 +17,8 @@ public class UserDaoTest implements IntegrationTest {
 	
 	User user = new User("bartac", "pass", 5, 5);
 	User user2 = new User("clementine");
+	User user3 = new User("bartac", "pass", 5, 5);
+	User user4 = new User("bartac", "pass", 5, 5);
 
 	EntityManager em;
 	UserDao dao;
@@ -44,10 +46,13 @@ public class UserDaoTest implements IntegrationTest {
 
 		em.getTransaction().begin();
 		dao.create(user);
+		dao.create(user3);
+		dao.create(user4);
+		
 
 		assertTrue(user.getId() > 0);
 		
-		dao.delete(user.getId());
+		//dao.delete(user.getId());
 		
 		em.getTransaction().commit();
 	}

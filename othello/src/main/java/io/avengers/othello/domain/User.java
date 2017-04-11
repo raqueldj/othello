@@ -10,7 +10,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id = null;
+	private Integer id ;
 	
 	private String name;
 	private String passWord;

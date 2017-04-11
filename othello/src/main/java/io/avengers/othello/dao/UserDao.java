@@ -1,5 +1,8 @@
 package io.avengers.othello.dao;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 
 import io.avengers.othello.domain.User;
@@ -10,6 +13,17 @@ public class UserDao {
 	
 	public UserDao(EntityManager em){
 		this.em = em;
+	}
+	
+	public List<User> findAll(){
+		String query="SELECT u from User u ORDER by u.id";
+				return em.createQuery(query,User.class)
+						.getResultList();
+	}
+	
+	public Optional<User> findById(Integer id){
+		User u = em.find(User.class, id);
+		return Optional.ofNullable(u);
 	}
 	
 	public User create(User user){
@@ -35,6 +49,18 @@ public class UserDao {
 			u.setPassWord(uUp.getPassWord());
 		
 		return u;
+	}
+	
+	public void updateUserWin(Integer id){
+		User u = em.find(User.class, id);
+		int w=u.getGameWin();
+		u.setGameWin(w+1);
+	}
+	
+	public void updateUserLose(Integer id){
+		User u = em.find(User.class, id);
+		int l=u.getGameLose();
+		u.setGameLose(l+1);
 	}
 	
 }

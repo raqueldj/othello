@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../modele';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.css'],
+  providers: [DataService]
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
 
-  constructor() { }
+  constructor(private dataService: DataService) {
 
-  ngOnInit() {
+    this.dataService.getUsers().then(users => this.users = users);
+
+
   }
 
+  users: User[];
 }

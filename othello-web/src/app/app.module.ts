@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { UsersComponent } from './users/users.component';
 import { GamesRunningComponent } from './games-running/games-running.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { DataService} from './data.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

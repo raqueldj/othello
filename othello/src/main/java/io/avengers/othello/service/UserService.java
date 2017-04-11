@@ -1,5 +1,8 @@
 package io.avengers.othello.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -24,6 +27,14 @@ public class UserService {
     	this.dao = new UserDao(em);
     }
     
+    public List<User> findAll(){
+    	return dao.findAll();
+    }
+    
+    public Optional<User> findById(int id){
+    	return dao.findById(id);
+    }
+    
     public User createUser(User user){
     	return dao.create(user);
     }
@@ -35,5 +46,13 @@ public class UserService {
     public User updateUser(Integer id, User user){
     	User u = dao.update(id, user);
 		return u;
+    }
+    
+    public void updateUserWin(Integer id){
+    	dao.updateUserWin(id);
+    }
+    
+    public void updateUserLose(Integer id){
+    	dao.updateUserLose(id);
     }
 }

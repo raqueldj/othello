@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
-  constructor() { }
+  @Output() newGame: EventEmitter<null> = new EventEmitter();
+  @Output() loadGame: EventEmitter<null> = new EventEmitter();
 
-  ngOnInit() {
+  onNewGame() {
+    this.newGame.emit();
   }
-
+  onLoadGame() {
+    this.loadGame.emit();
+  }
 }
