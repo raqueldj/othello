@@ -74,6 +74,8 @@ public class TokenDaoTest implements IntegrationTest {
 
 		boolean found = dao.findById(t2.getY()).equals(6);
 		
+		assertTrue(found);
+		
 		em.getTransaction().commit();
 	}
 }
