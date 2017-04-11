@@ -12,7 +12,7 @@ public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id = null;
+	private Integer id =null;
 	
 	@ManyToOne
 	private User whiteUser;

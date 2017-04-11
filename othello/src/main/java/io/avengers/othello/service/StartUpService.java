@@ -22,18 +22,18 @@ public class StartUpService {
 	@PostConstruct
 	void after() {
 		System.out.println("====================AFTER STARTUP=======================");
-		//createData();
+		createData();
 	}
 
 	void createData() {
 		User bob = new User("Bob");
 		User jack = new User("Jack");
-		List<User> users = new ArrayList<>();
-		users.add(bob);
-		users.add(jack);
+		User boby = new User("Boby");
+
 		
 		Game game = new Game(bob,jack);
 		
+		em.persist(boby);
 		em.persist(bob);
 		em.persist(jack);
 		em.persist(game);
