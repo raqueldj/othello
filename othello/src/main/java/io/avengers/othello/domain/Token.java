@@ -1,9 +1,12 @@
 package io.avengers.othello.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Token {
 
 	@Id
@@ -13,6 +16,8 @@ public class Token {
 	private Boolean isWhite;
 	private int x;
 	private int y;
+	
+	@ManyToOne
 	private Game game;
 	
 	public Token(){
