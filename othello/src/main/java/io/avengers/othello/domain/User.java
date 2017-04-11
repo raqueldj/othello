@@ -18,9 +18,6 @@ public class User {
 	private int gameWin;
 	private int gameLose;
 	
-	@OneToOne
-	private Game game;
-	
 	public User() {
 	}
 	
@@ -28,12 +25,11 @@ public class User {
 		this.name = name;
 	}
 
-	public User(String name, String passWord, int gameWin, int gameLose, Game game) {
+	public User(String name, String passWord, int gameWin, int gameLose) {
 		this.name = name;
 		this.passWord = passWord;
 		this.gameWin = gameWin;
 		this.gameLose = gameLose;
-		this.game = game;
 	}
 
 
@@ -64,14 +60,6 @@ public class User {
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
-	}
-	
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 
 	public int getGameWin() {

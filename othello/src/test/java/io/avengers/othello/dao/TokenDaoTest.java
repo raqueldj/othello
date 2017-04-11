@@ -19,9 +19,9 @@ public class TokenDaoTest implements IntegrationTest {
 	EntityManager em;
 	TokenDao dao;
 
-	Token t = new Token(null, true, 2, 5, null);
-	Token t1 = new Token(null, true, 0, 0, null);
-	Token t2 = new Token(null, false, 8, 0, null);
+	Token t = new Token(true, 2, 5, null);
+	Token t1 = new Token(true, 0, 0, null);
+	Token t2 = new Token(false, 8, 0, null);
 
 	@Before
 	public void setUp() {
