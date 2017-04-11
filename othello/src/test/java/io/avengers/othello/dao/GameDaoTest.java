@@ -21,6 +21,8 @@ public class GameDaoTest {
 	User bob = new User("Bob");
 	User jack = new User("Jack");
 	Game game = new Game(bob,jack);
+	Game gameBis = new Game(jack,bob);
+	Game gameTer = new Game (bob,jack);
 	
 
 	EntityManager em;
@@ -52,8 +54,12 @@ public class GameDaoTest {
 	public void create(){
 		em.getTransaction().begin();
 		gdao.create(game);
+		gdao.create(gameBis);
+		gdao.create(gameTer);
 		
 		assertTrue(game.getId() > 0);
+		assertTrue(gameBis.getId() > 0);
+		assertTrue(gameTer.getId() > 0);
 		
 		em.getTransaction().commit();
 	}
