@@ -1,5 +1,7 @@
 package io.avengers.othello.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import io.avengers.othello.domain.Token;
@@ -30,5 +32,13 @@ public class TokenDao {
 		Token token = em.find(Token.class, id);
 		
 		return token;
+	}
+	
+	public List<Token> findByGame(int id){
+		String query="SELECT t from Token WHERE t.game_id=:id";
+		return em.createQuery(query,Token.class)
+				.setParameter("id", id)
+				.getResultList();
+				
 	}
 }
