@@ -54,13 +54,13 @@ public class UserWs {
 	}
 	
 	@PUT
-	@Path("/{id}/win")
+	@Path("/win/{id}")
 	public void updateUserWin(@PathParam("id") int id){
 		service.updateUserWin(id);
 	}
 	
 	@PUT
-	@Path("/{id}/lose")
+	@Path("/lose/{id}")
 	public void updateUserLose(@PathParam("id") int id){
 		service.updateUserLose(id);
 	}

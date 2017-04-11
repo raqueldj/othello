@@ -39,6 +39,10 @@ public class TokenService {
 		return tokenDao.update(t);
 	}
 	
+	public void updateTokenSwitch(Integer id){
+		tokenDao.updateTokenSwitch(id);
+	}
+	
 	public void delete(Token token){
 		Token t = tokenDao.findById(token.getId());
 				

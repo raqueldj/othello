@@ -46,10 +46,18 @@ public class TokenWs {
 		return tokenService.update(token);
 	}
 	
+	@PUT
+	@Path("/switch/{id}")
+	public void updateTokenSwitch(@PathParam("id") int id){
+		tokenService.updateTokenSwitch(id);
+	}
+	
 	@DELETE
 	@Path("{id}")
 	public void delete(@PathParam("id") int id){
 		Token t = tokenService.findById(id);
 		tokenService.delete(t);
 	}
+	
+	
 }
