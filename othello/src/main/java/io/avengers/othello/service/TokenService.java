@@ -1,5 +1,6 @@
 package io.avengers.othello.service;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,6 +13,12 @@ public class TokenService {
 	
 	@PersistenceContext
 	EntityManager em;
+	
+	@PostConstruct
+	void after() {
+		System.out.println("----------PostConstruct in FunkoPopService----------");
+		this.tokenDao = new TokenDao(em);
+	}
 	
 	public Token create(Token token){
 		return tokenDao.create(token);
