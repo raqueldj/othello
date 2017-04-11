@@ -1,14 +1,10 @@
 package io.avengers.othello.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Game {
@@ -18,10 +14,10 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id = null;
 	
-	@OneToOne
+	@ManyToOne
 	private User whiteUser;
 	
-	@OneToOne
+	@ManyToOne
 	private User blackUser;
 	
 	private boolean isRunning=true;
@@ -35,8 +31,8 @@ public class Game {
 		this.blackUser=blackUser;
 	}
 
-	public Game(Integer id, User whiteUser, User blackUser, boolean isRunning) {
-		this.id = id;
+	public Game( User whiteUser, User blackUser, boolean isRunning) {
+		
 		this.whiteUser = whiteUser;
 		this.blackUser=blackUser;
 		this.isRunning = isRunning;
