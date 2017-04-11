@@ -10,6 +10,7 @@ import { DataComponent } from './data/data.component';
 import { MenuComponent } from './menu/menu.component';
 import { UsersComponent } from './users/users.component';
 import { GamesRunningComponent } from './games-running/games-running.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GamesRunningComponent } from './games-running/games-running.component';
     DataComponent,
     MenuComponent,
     UsersComponent,
-    GamesRunningComponent
+    GamesRunningComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
