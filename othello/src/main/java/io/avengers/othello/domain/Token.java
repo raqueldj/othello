@@ -19,9 +19,8 @@ public class Token {
 		
 	}
 	
-	public Token(Integer id, Boolean isWhite, int x, int y, Game game) {
+	public Token(Boolean isWhite, int x, int y, Game game) {
 		super();
-		this.id = id;
 		this.isWhite = isWhite;
 		this.x = x;
 		this.y = y;

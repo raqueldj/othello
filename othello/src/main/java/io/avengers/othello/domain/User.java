@@ -1,14 +1,10 @@
 package io.avengers.othello.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -19,12 +15,11 @@ public class User {
 	
 	private String name;
 	private String passWord;
-	int gameWin;
-	int gameLose;
-	/*
-	@ManyToMany
-	@JoinTable(name = "USER_GAME", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "id") })
-	private List<Game> game;*/
+	private int gameWin;
+	private int gameLose;
+	
+	@OneToOne
+	private Game game;
 	
 	public User() {
 	}
@@ -33,14 +28,12 @@ public class User {
 		this.name = name;
 	}
 
-	public User(Integer id, String name, String passWord, int gameWin, int gameLose/*, List<Game> game*/) {
-		super();
-		this.id = id;
+	public User(String name, String passWord, int gameWin, int gameLose, Game game) {
 		this.name = name;
 		this.passWord = passWord;
 		this.gameWin = gameWin;
 		this.gameLose = gameLose;
-		//this.game = game;
+		this.game = game;
 	}
 
 
@@ -73,6 +66,14 @@ public class User {
 		this.passWord = passWord;
 	}
 	
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 	public int getGameWin() {
 		return this.gameWin;
 	}
@@ -89,11 +90,4 @@ public class User {
 		this.gameLose = gameLose;
 	}
 
-	/*public List<Game> getGame() {
-		return game;
-	}
-
-	public void setGame(List<Game> game) {
-		this.game = game;
-	}*/
 }
