@@ -1,8 +1,5 @@
 package io.avengers.othello.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -10,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import io.avengers.othello.domain.Game;
+import io.avengers.othello.domain.Token;
 import io.avengers.othello.domain.User;
 
 @Startup
@@ -29,14 +27,18 @@ public class StartUpService {
 		User bob = new User("Bob");
 		User jack = new User("Jack");
 		User boby = new User("Boby");
+		Token token = new Token();
+		
 
 		
 		Game game = new Game(bob,jack);
+		token.setGame(game);
 		
 		em.persist(boby);
 		em.persist(bob);
 		em.persist(jack);
 		em.persist(game);
+		em.persist(token);
 		
 	}
 }
