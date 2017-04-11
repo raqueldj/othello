@@ -1,5 +1,7 @@
 package io.avengers.othello.service;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,6 +43,10 @@ public class TokenService {
 	
 	public Token findById(int id){
 		return tokenDao.findById(id);
+	}
+	
+	public List<Token> findByGame(int id){
+		return tokenDao.findByGame(id);
 	}
 	
 }

@@ -1,5 +1,7 @@
 package io.avengers.othello.ws;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -26,6 +28,12 @@ public class TokenWs {
 	@Path("{id}")
 	public Token findById(@PathParam("id") int id){
 		return tokenService.findById(id);
+	}
+	
+	@GET
+	@Path("{id}")
+	public List<Token> findByGame(@PathParam("id") int id){
+		return tokenService.findByGame(id);
 	}
 	
 	@POST
