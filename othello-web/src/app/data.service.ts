@@ -15,11 +15,16 @@ export class DataService {
             .then ((response) => {return response.json()});
     }
 
-    getRunningGames() : Promise<Game[]>{
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game/running")
+    getRunningGames() : void{
+        this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game/running")
         .toPromise()
-        .then((response)=>{return response.json()});
+        .then((response)=>{(response.json() as Game[]).forEach(game=>this.runningGames.push(game))});
 
 
     }
+
+
+    runningGames: Game[] = [];
 }
+
+
