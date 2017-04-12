@@ -10,7 +10,12 @@ public class GameStateDto {
 	boolean whitePlays;
 
 	public GameStateDto() {
-		super();
+		set[4][4]=2;
+		set[5][5]=2;
+		set[4][5]=1;
+		set[5][4]=1;
+		
+		
 	}
 
 	public int[][] getSet() {
