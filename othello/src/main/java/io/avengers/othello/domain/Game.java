@@ -22,6 +22,16 @@ public class Game {
 	
 	private boolean isRunning=true;
 	
+	private boolean whitePlays=false;
+	
+	public boolean isWhitePlays() {
+		return whitePlays;
+	}
+
+	public void setWhitePlays(boolean whitePlays) {
+		this.whitePlays = whitePlays;
+	}
+
 	public Game(){
 		
 	}
