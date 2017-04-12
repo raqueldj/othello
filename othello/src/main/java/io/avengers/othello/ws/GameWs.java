@@ -30,6 +30,13 @@ public class GameWs {
 		
 	
 	}
+	
+	@PUT
+	@Path("could-play")
+	public void couldPlay(int id){
+		service.couldPlay(id);
+	}
+	
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})

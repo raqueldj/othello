@@ -77,6 +77,12 @@ public class GameService {
 		return gameStateDto;
 	}
 
+	public void couldPlay(int id){
+		
+		
+		
+	}
+	
 	public Token createToken(CreateTokenDto createTokenDto) {
 
 		return null;
