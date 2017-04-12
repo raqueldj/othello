@@ -25,7 +25,11 @@ public class GameWs {
 	@EJB
 	GameService service;
 	
-	@GET
+	
+	
+	
+	
+	/*@GET
 	public List<Game> findAll(){
 		return service.findAll();
 	}
@@ -65,6 +69,6 @@ public class GameWs {
 	public void updateGameNotRunning(@PathParam("id") int id){
 		service.updateGameNotRunning(id);
 	}
-	
+	*/
 
 }
