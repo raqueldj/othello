@@ -2,36 +2,42 @@ package io.avengers.othello.dto;
 
 public class CreateGameDto {
 
-	int id1;
-	int id2;
-	String passWord1;
-	String passWord2;
+	int idBlack;
+	int idWhite;
+	String passwordBlack;
+	String passWordWhite;
 	
 	
-	public int getId1() {
-		return id1;
+	
+	
+	public CreateGameDto() {
 	}
-	public void setId1(int id1) {
-		this.id1 = id1;
+	public int getIdBlack() {
+		return idBlack;
 	}
-	public int getId2() {
-		return id2;
+	public void setIdBlack(int idBlack) {
+		this.idBlack = idBlack;
 	}
-	public void setId2(int id2) {
-		this.id2 = id2;
+	public int getIdWhite() {
+		return idWhite;
 	}
-	public String getPassWord1() {
-		return passWord1;
+	public void setIdWhite(int idWhite) {
+		this.idWhite = idWhite;
 	}
-	public void setPassWord1(String passWord1) {
-		this.passWord1 = passWord1;
+	public String getPasswordBlack() {
+		return passwordBlack;
 	}
-	public String getPassWord2() {
-		return passWord2;
+	public void setPasswordBlack(String passwordBlack) {
+		this.passwordBlack = passwordBlack;
 	}
-	public void setPassWord2(String passWord2) {
-		this.passWord2 = passWord2;
+	public String getPassWordWhite() {
+		return passWordWhite;
+	}
+	public void setPassWordWhite(String passWordWhite) {
+		this.passWordWhite = passWordWhite;
 	}
 	
+	
+
 	
 }
