@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import io.avengers.othello.dao.UserDao;
 import io.avengers.othello.domain.User;
 import io.avengers.othello.dto.CreateUserDto;
+import io.avengers.othello.dto.UserDto;
 
 @Stateless
 @Named
@@ -39,7 +40,6 @@ public class UserService {
     public User createUser(CreateUserDto userDto){
     	
     	User bob = new User(userDto.getName(), userDto.getPassWord());
-    	
     	return dao.create(bob);
     }
     
