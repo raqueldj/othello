@@ -6,6 +6,9 @@ public class UserDto {
 	String name;
 	String passWord;
 	
+	public UserDto() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public int getId() {
 		return id;

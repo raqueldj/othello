@@ -5,6 +5,10 @@ public class CreateUserDto {
 	String name;
 	String passWord;
 	
+	public CreateUserDto() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getName() {
 		return name;
 	}
