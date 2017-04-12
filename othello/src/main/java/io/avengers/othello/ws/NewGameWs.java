@@ -29,17 +29,16 @@ public class NewGameWs {
 	}
 	
 	@POST
+	@Path("user")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createUser(CreateUserDto userDto){
 		service.createUser(userDto);
 	}
 
 	@POST
+	@Path("game")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createGame(CreateGameDto gameDto){
 		service.createGame(gameDto);
 	}
-	
-	//createGame ==> identification 
-	
 }

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 
-import { Token } from '../modele';
+import { CreateToken } from '../modele';
 import { DataService } from '../data.service';
 
 @Component({
@@ -17,5 +17,5 @@ export class TokenComponent {
   constructor(private dataService: DataService) {
   }
 
-tokenPosition: Token[] = this.dataService.tokenPosition;
+tokenPosition: CreateToken[]; //= this.dataService.tokenPosition;
 }
