@@ -12,6 +12,7 @@ import { UsersComponent } from './users/users.component';
 import { GamesRunningComponent } from './games-running/games-running.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { DataService} from './data.service';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DataService} from './data.service';
     MenuComponent,
     UsersComponent,
     GamesRunningComponent,
-    UsersListComponent
+    UsersListComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
