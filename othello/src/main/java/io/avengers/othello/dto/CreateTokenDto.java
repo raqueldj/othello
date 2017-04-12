@@ -1,7 +1,6 @@
 package io.avengers.othello.dto;
 
-<<<<<<< HEAD:othello/src/main/java/io/avengers/othello/dto/CreateTakenDto.java
-public class CreateTakenDto {
+public class CreateTokenDto {
 	
 	int x;
 	int y;
@@ -9,7 +8,7 @@ public class CreateTakenDto {
 	
 	
 	
-	public CreateTakenDto() {
+	public CreateTokenDto() {
 	}
 	public int getX() {
 		return x;
@@ -29,10 +28,4 @@ public class CreateTakenDto {
 	public void setWhite(boolean isWhite) {
 		this.isWhite = isWhite;
 	}
-	
-	
-=======
-public class CreateTokenDto {
->>>>>>> 178297f5cc63bb5cf12bf60d3161952f6a8fea74:othello/src/main/java/io/avengers/othello/dto/CreateTokenDto.java
-
 }
