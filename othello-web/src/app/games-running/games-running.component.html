@@ -1,3 +1,7 @@
-<div *ngFor='let game of games; let i= index;'>
+Coucou {{this.dataservice.runningGames}}
+
+<div *ngFor='let game of runningGames;let index=index'>
+    console.log(coucou)
+    {{game.id}}
 </div>
 <div><button (click) = 'onJoinGame()'>Join game</button></div>
