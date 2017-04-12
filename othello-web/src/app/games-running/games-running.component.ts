@@ -19,15 +19,6 @@ export class GamesRunningComponent {
 
   runningGames: Game[] = this.dataService.runningGames;
 
-  Id = 1;
-  addGame(player1, player2) {
-    this.runningGames.push({
-      id: this.Id++,
-      player1,
-      player2
-    })
- }
-
   removeGame(gameIndex) {
     this.runningGames.splice(gameIndex, 1);
   }
