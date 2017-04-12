@@ -2,6 +2,7 @@ package io.avengers.othello.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -12,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import io.avengers.othello.dao.GameDao;
 import io.avengers.othello.domain.Game;
 import io.avengers.othello.dto.GameDto;
+import io.avengers.othello.dto.GameStateDto;
 
 @Stateless
 @Named
@@ -45,4 +47,5 @@ public class LoadGameService {
 		}
 		return gamesDto;
 	}
+	
 }
