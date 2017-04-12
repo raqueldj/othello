@@ -1,8 +1,7 @@
 export interface User {
+    id : number;
     name : string;
     passWord : string;
-    gameWin : number;
-    gameLose : number;
 }
 
 export interface Game {
@@ -22,4 +21,29 @@ export interface CreateGame {
 export interface CreateUser {
     name : String;
     passWord : String;
+}
+
+export interface CreateToken {
+    x : number;
+    y : number;
+    isWhite : boolean;
+}
+
+export interface GameState {
+    set : number[][];
+    WhiteUser : User;
+    BlackUser : User;
+    scorePW : number;
+    scorePB : number;
+    isRunning : boolean;
+    whitePlays : boolean;
+}
+
+export interface LoadGame {
+    idGame : number;
+}
+
+export interface Replay {
+    id1 : number;
+    id2 : number;
 }
