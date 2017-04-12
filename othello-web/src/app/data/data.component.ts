@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css']
 })
-export class DataComponent implements OnInit {
+export class DataComponent {
+  @Input() player1;
+  @Input() player2;
 
-  constructor() { }
-
-  ngOnInit() {
+  @Output() replay: EventEmitter<null> = new EventEmitter();
+  onReplay() {
+    this.replay.emit();
   }
-
 }
