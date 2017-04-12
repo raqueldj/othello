@@ -1,5 +1,5 @@
-import { User } from './modele';
-import { Game } from './modele';
+import { User , Game } from './modele';
+
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Injectable} from '@angular/core';
