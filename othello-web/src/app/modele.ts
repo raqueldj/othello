@@ -11,3 +11,15 @@ export interface Game {
     blackUser : User;
     running : boolean;
 }
+
+export interface CreateGame {
+    whiteId : number;
+    blackId : number;
+    whitePassWord : String;
+    blackPassWord : String;
+}
+
+export interface CreateUser {
+    name : String;
+    passWord : String;
+}

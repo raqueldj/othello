@@ -15,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import io.avengers.othello.domain.User;
+import io.avengers.othello.dto.CreateUserDto;
 import io.avengers.othello.service.UserService;
 
 @Path("user")
@@ -38,8 +39,8 @@ public class UserWs {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public User createUser(User user){
-		return service.createUser(user);
+	public User createUser(CreateUserDto userDto){
+		return service.createUser(userDto);
 	}
 	
 	@DELETE

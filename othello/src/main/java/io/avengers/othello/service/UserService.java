@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import io.avengers.othello.dao.UserDao;
 import io.avengers.othello.domain.User;
+import io.avengers.othello.dto.CreateUserDto;
 
 @Stateless
 @Named
@@ -35,8 +36,11 @@ public class UserService {
     	return dao.findById(id);
     }
     
-    public User createUser(User user){
-    	return dao.create(user);
+    public User createUser(CreateUserDto userDto){
+    	
+    	User bob = new User(userDto.getName(), userDto.getPassWord());
+    	
+    	return dao.create(bob);
     }
     
     public void deleteUser(Integer id){
