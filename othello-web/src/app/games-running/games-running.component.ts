@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Game } from './games'
+import { Game } from '../modele';
 
 @Component({
   selector: 'app-games-running',
@@ -10,7 +10,7 @@ import { Game } from './games'
 export class GamesRunningComponent {
   @Input() games;
 
-  @Output() createGame: EventEmitter<null> = new EventEmitter();
+  @Output() joinGame: EventEmitter<null> = new EventEmitter();
 
   gamesList: Game[] = [];
 
@@ -28,7 +28,7 @@ export class GamesRunningComponent {
   }
 
 
-  onNewGame() {
-    this.createGame.emit();
+  onJoinGame() {
+    this.joinGame.emit();
   }
 }
