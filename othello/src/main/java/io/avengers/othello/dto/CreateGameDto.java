@@ -7,9 +7,6 @@ public class CreateGameDto {
 	String passwordBlack;
 	String passWordWhite;
 	
-	
-	
-	
 	public CreateGameDto() {
 	}
 	public int getIdBlack() {
