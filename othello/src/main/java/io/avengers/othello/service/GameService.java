@@ -53,7 +53,7 @@ public class GameService {
 
 		int ws = 0;
 		int bs = 0;
-		int[][] set = new int[8][8];
+		int[][] set = new int[9][9];
 
 		for (Token token : tokens) {
 
@@ -74,11 +74,14 @@ public class GameService {
 
 		for (int i = 1; i <= 8; i++) {
 			for (int j = 1; j <= 8; j++) {
-				playable = isPlayable(i, j, gameStateDto);
+				if(isPlayable(i, j, gameStateDto)){
+					playable=true;
+				}
+				
 			}
 
 		}
-
+System.out.println("==================================== playable :"+playable);
 		if (!playable) {
 			gameStateDto.setWhitePlays(!gameStateDto.isWhitePlays());
 			gdao.missedTurn(id);
@@ -107,7 +110,7 @@ public class GameService {
 
 			Token newToken = new Token();
 			newToken.setGame(game);
-			newToken.setIsWhite(createTokenDto.isWhite());
+			newToken.setIsWhite(gameStateDto.isWhitePlays());
 			newToken.setX(createTokenDto.getX());
 			newToken.setY(createTokenDto.getY());
 			tdao.create(newToken);
