@@ -10,7 +10,7 @@ export class DataService {
     constructor(private http:Http){}
 
     getUsers() : Promise<User[]> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/user")
+        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game")
             .toPromise()
             .then ((response) => {return response.json()});
     }

@@ -11,7 +11,7 @@ export class DataService {
     constructor(private http: Http) { }
 
     getUsers(): Promise<User[]> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/user")
+        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game")
             .toPromise()
             .then((response) => { return response.json() });
     }
@@ -36,7 +36,7 @@ export class DataService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/user", {user} , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", {user} , options)
             .toPromise()
             .then((response) => { return response.json() });
     }
