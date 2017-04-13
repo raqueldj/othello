@@ -1,1 +1,10 @@
+<h2>Games running</h2>
+
+<div>
+    <ul>
+        <li *ngFor="let game of games;" value="{{game.id}}">{{game.id}} - {{game.playerWhite.name}} - {{game.playerBlack.name}}</li>
+    </ul>
+</div>
+
+
 <div><button (click)='onloadGame()'>Load Game</button></div>

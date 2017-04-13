@@ -16,12 +16,18 @@ export class DataService {
             .then((response) => { return response.json() });
     }
 
+    getGamesRunning(): Promise<Game[]> {
+        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/load-game")
+            .toPromise()
+            .then((response) => { return response.json() });
+    }
+
     createGameDS(game: CreateGame): Promise<CreateGame> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log(game);
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/game", game , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/game", game, options)
             .toPromise()
             .then((response) => { return response.json() });
     }
@@ -30,7 +36,7 @@ export class DataService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log(user);
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", user , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", user, options)
             .toPromise()
             .then((response) => { return response.json() });
     }
