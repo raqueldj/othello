@@ -10,21 +10,5 @@ import { DataService } from '../data.service.1';
   providers: [DataService]
 })
 export class GamesRunningComponent {
-  @Input() games;
 
-  @Output() joinGame: EventEmitter<null> = new EventEmitter();
-
-  constructor(private dataService: DataService) {
-    }
-
-  runningGames: Game[] = this.dataService.runningGames;
-
-  removeGame(gameIndex) {
-    this.runningGames.splice(gameIndex, 1);
-  }
-
-
-  onJoinGame() {
-    this.joinGame.emit();
-  }
 }

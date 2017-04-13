@@ -12,10 +12,18 @@ import { DataService } from '../data.service';
 })
 export class TokenComponent {
   @Input() token;
-  @Output() position: EventEmitter<null> = new EventEmitter();
+  @Output() position: EventEmitter<CreateToken> = new EventEmitter();
 
   constructor(private dataService: DataService) {
   }
 
-tokenPosition: CreateToken[]; //= this.dataService.tokenPosition;
+  createToken(x, y, isWhite) {
+    this.position.emit({
+      x,
+      y,
+      isWhite
+    });
+
+    this.dataService.createToken({ x, y, isWhite });
+  }
 }

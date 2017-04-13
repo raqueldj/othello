@@ -1,3 +1,14 @@
-<p>
-  token works!
-</p>
+<h2>
+  New token
+</h2>
+
+<div>
+  <input type="button">
+</div>
+<div>
+  <input type="text" #x>
+  <input type="text" #y>
+  <input type="text" #isWhite>
+  {{token.x}} - {{token.y}} - {{token.isWhite}}
+  <button (click)='createToken(x.value, y.value, isWhite.value)'>Create Token</button>
+</div>

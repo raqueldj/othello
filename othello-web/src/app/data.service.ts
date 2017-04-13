@@ -1,4 +1,4 @@
-import { User, Game, CreateUser } from './modele';
+import { User, Game, CreateUser, CreateToken } from './modele';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -16,18 +16,12 @@ export class DataService {
             .then((response) => { return response.json() });
     }
 
-    getRunningGames(): void {
-        this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game/running")
-            .toPromise()
-            .then((response) => { (response.json() as Game[]).forEach(game => this.runningGames.push(game)) });
-    }
-
     //createGame(): Promise<Game>
     createGame(game: Game): Promise<Game> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game", {game} , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game", game , options)
             .toPromise()
             .then((response) => { return response.json() });
     }
@@ -36,12 +30,20 @@ export class DataService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", {user} , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", user , options)
             .toPromise()
             .then((response) => { return response.json() });
     }
 
-    runningGames: Game[] = [];
+    createToken(token: CreateToken): Promise<CreateToken> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game", token, options)
+            .toPromise()
+            .then((response) => { return response.json() });
+    }
+
 }
 
 
