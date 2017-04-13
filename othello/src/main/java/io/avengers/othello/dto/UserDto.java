@@ -17,7 +17,10 @@ public class UserDto {
 		this.passWord = passWord;
 	}
 
-
+	public UserDto(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	public int getId() {
 		return id;

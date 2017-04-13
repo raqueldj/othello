@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import io.avengers.othello.dao.GameDao;
 import io.avengers.othello.domain.Game;
 import io.avengers.othello.dto.GameDto;
+import io.avengers.othello.dto.UserDto;
 
 @Stateless
 @Named
@@ -30,17 +31,14 @@ public class LoadGameService {
 	public List<GameDto> findAllGamesRunning() {
 		List<Game> games = gameDao.findRunning();
 		List<GameDto> gamesDto = new ArrayList<>();
-		GameDto gameDto = new GameDto();
+		
 
 		for (Game game : games) {
-
-			gameDto.setId(game.getId());
-			gameDto.getPlayerBlack().setId(game.getBlackUser().getId());
-			gameDto.getPlayerBlack().setName(game.getBlackUser().getName());
-			gameDto.getPlayerWhite().setId(game.getWhiteUser().getId());
-			gameDto.getPlayerWhite().setName(game.getWhiteUser().getName());
-
-			gamesDto.add(new GameDto());
+			
+			UserDto playerBlack = new UserDto(game.getId(), game.getBlackUser().getName());
+			UserDto playerWhite = new UserDto(game.getId(), game.getWhiteUser().getName());
+			
+			gamesDto.add( new GameDto(game.getId(), playerBlack, playerWhite));
 		}
 		return gamesDto;
 	}
