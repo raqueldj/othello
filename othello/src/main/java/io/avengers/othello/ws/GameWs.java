@@ -31,14 +31,6 @@ public class GameWs {
 	
 	}
 	
-<<<<<<< HEAD
-=======
-	/*@PUT
-	@Path("could-play")
-	public void couldPlay(int id){
-		service.couldPlay(id);
-	}*/
->>>>>>> 5a26201c3fcb2db7afa653c6a7cf31bfd6253371
 	
 
 	@POST
