@@ -1,4 +1,4 @@
-import { User, Game, CreateUser, CreateToken } from './modele';
+import { User, Game, CreateUser, CreateToken, CreateGame } from './modele';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -16,12 +16,12 @@ export class DataService {
             .then((response) => { return response.json() });
     }
 
-    //createGame(): Promise<Game>
-    createGame(game: Game): Promise<Game> {
+    createGameDS(game: CreateGame): Promise<CreateGame> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
+        console.log(game);
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game", game , options)
+        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/game", game , options)
             .toPromise()
             .then((response) => { return response.json() });
     }

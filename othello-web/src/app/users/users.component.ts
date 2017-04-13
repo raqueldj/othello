@@ -12,6 +12,9 @@ import { DataService } from '../data.service';
 export class UsersComponent {
   @Output() createUserOutput: EventEmitter<CreateUser> = new EventEmitter();
 
+  whiteId: number = 0;
+  blackId: number = 0;
+
   constructor(private dataService: DataService) {
   }
 
@@ -22,6 +25,10 @@ export class UsersComponent {
     });
     console.log(name);
     console.log(passWord);
-    this.dataService.createUserDS({name, passWord});
+    this.dataService.createUserDS({ name, passWord });
+  }
+
+  createGame(whitePassWord, blackPassWord) {
+    this.dataService.createGameDS({ whiteId: this.whiteId, blackId: this.blackId, whitePassWord, blackPassWord });
   }
 }

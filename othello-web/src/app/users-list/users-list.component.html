@@ -1,3 +1,3 @@
-<select>
-  <option *ngFor="let user of users;">{{user.name}}</option>
+<select (input)='onSelect(v.value)' #v>
+  <option *ngFor="let user of users;" value="{{user.id}}">{{user.name}}</option>
 </select>
