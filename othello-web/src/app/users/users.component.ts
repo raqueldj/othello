@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CreateUser } from '../modele';
+import { CreateUser, User } from '../modele';
 import { UsersListComponent } from '../users-list/users-list.component';
 import { DataService } from '../data.service';
 
@@ -17,7 +17,10 @@ export class UsersComponent {
   idBlack: number = 0;
 
   constructor(private dataService: DataService) {
+        this.dataService.getUsers().then(users => this.users = users);
+
   }
+  users: User[];
 
   createUser(name, passWord) {
     this.createUserOutput.emit({
@@ -32,5 +35,7 @@ export class UsersComponent {
   createGame(passWordWhite, passWordBlack) {
     this.dataService.createGameDS({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
     this.createNewGame.emit();
+    this.dataService.getUsers().then(users => this.users = users);
   }
+  
 }
