@@ -38,8 +38,10 @@ public class GameService {
 		this.tdao = new TokenDao(em);
 		this.udao = new UserDao(em);
 	}
-	//---1--- 
-	//Etat de la partie(positions des jetons, scores, couleur du prochain coup à jouer)
+
+	// ---1---
+	// Etat de la partie(positions des jetons, scores, couleur du prochain coup
+	// à jouer)
 	public GameStateDto getState(int id) {
 
 		Game game = gdao.findById(id).orElseThrow(NotFoundException::new);
@@ -80,12 +82,21 @@ public class GameService {
 		if (!playable) {
 			gameStateDto.setWhitePlays(!gameStateDto.isWhitePlays());
 			gdao.missedTurn(id);
+			gdao.nextPlayer(id);
+			game.setMissedTurn(game.getMissedTurn()+1);
 		}
+		
+		if(game.getMissedTurn()==2 || ws+bs==64){
+			gdao.updateGameNotRunning(id);
+			gameStateDto.setRunning(false);
+		}
+		
 		return gameStateDto;
 	}
 
-//---2---	
-
+	// ---2---
+	// Verifie si le coup est jouable et le créé si possible (renvoi l'Id du
+	// jeton et si il a été créé)
 	public TokenCreatedDto createToken(CreateTokenDto createTokenDto) {
 		GameStateDto gameStateDto = getState(createTokenDto.getGameId());
 
@@ -104,12 +115,18 @@ public class GameService {
 			createdToken.setTokenId(newToken.getId());
 			createdToken.setGameId(createTokenDto.getGameId());
 
+		} else {
+			createdToken.setHasBeenCreated(false);
+			createdToken.setTokenId(0);
+			createdToken.setGameId(createTokenDto.getGameId());
 		}
 
-		return null;
+		return createdToken;
 
 	}
 
+	//---3---
+	//Retourne les jetons et passe au tour suivant
 	public void play(TokenCreatedDto tokenCreated) {
 		GameStateDto gameStateDto = getState(tokenCreated.getGameId());
 		Game game = gdao.findById(tokenCreated.getGameId()).orElseThrow(NotFoundException::new);

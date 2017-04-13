@@ -44,6 +44,7 @@ public class Game {
 		this.whiteUser = whiteUser;
 		this.blackUser=blackUser;
 		this.missedTurn=0;
+		this.isRunning=true;
 	}
 
 	public Game( User whiteUser, User blackUser, boolean isRunning) {
