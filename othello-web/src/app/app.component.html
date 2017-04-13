@@ -5,11 +5,11 @@
 </div>
 
 <div>Users List
-  <app-users *ngIf = "state == 'Users'"></app-users>
+  <app-users *ngIf = "state == 'Users'" (createNewGame)="state='Game'" ></app-users>
 </div>
 
 <div>Games running List
-  <app-games-running *ngIf = "state == 'GamesRunning'"></app-games-running>
+  <app-games-running *ngIf = "state == 'GamesRunning'" (loadOldGame)="state='Game'"></app-games-running>
 </div>
 
 <div>Game

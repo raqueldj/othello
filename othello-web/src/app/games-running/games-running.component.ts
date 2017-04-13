@@ -10,5 +10,9 @@ import { DataService } from '../data.service.1';
   providers: [DataService]
 })
 export class GamesRunningComponent {
+    @Output() loadOldGame: EventEmitter<null> = new EventEmitter();
 
+  onloadGame() {
+    this.loadOldGame.emit();
+  }
 }

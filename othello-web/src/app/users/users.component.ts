@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 })
 export class UsersComponent {
   @Output() createUserOutput: EventEmitter<CreateUser> = new EventEmitter();
+  @Output() createNewGame: EventEmitter<null> = new EventEmitter();
 
   whiteId: number = 0;
   blackId: number = 0;
@@ -30,5 +31,6 @@ export class UsersComponent {
 
   createGame(whitePassWord, blackPassWord) {
     this.dataService.createGameDS({ whiteId: this.whiteId, blackId: this.blackId, whitePassWord, blackPassWord });
+    this.createNewGame.emit();
   }
 }
