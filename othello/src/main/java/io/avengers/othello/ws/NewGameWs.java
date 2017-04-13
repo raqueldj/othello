@@ -39,6 +39,9 @@ public class NewGameWs {
 	@Path("game")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createGame(CreateGameDto gameDto){
+		System.out.println("============================================");
 		service.createGame(gameDto);
+    	System.out.println("============================================" + gameDto.getPassWordBlack());
+
 	}
 }

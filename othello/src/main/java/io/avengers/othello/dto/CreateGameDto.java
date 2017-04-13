@@ -4,11 +4,19 @@ public class CreateGameDto {
 
 	int idBlack;
 	int idWhite;
-	String passwordBlack;
+	String passWordBlack;
 	String passWordWhite;
 	
 	public CreateGameDto() {
 	}
+	
+	public CreateGameDto(int idBlack, int idWhite, String passWordBlack, String passWordWhite) {
+		this.idBlack = idBlack;
+		this.idWhite = idWhite;
+		this.passWordBlack = passWordBlack;
+		this.passWordWhite = passWordWhite;
+	}
+
 	public int getIdBlack() {
 		return idBlack;
 	}
@@ -21,11 +29,11 @@ public class CreateGameDto {
 	public void setIdWhite(int idWhite) {
 		this.idWhite = idWhite;
 	}
-	public String getPasswordBlack() {
-		return passwordBlack;
+	public String getPassWordBlack() {
+		return passWordBlack;
 	}
-	public void setPasswordBlack(String passwordBlack) {
-		this.passwordBlack = passwordBlack;
+	public void setPassWordBlack(String passwordBlack) {
+		this.passWordBlack = passwordBlack;
 	}
 	public String getPassWordWhite() {
 		return passWordWhite;

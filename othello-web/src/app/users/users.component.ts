@@ -13,8 +13,8 @@ export class UsersComponent {
   @Output() createUserOutput: EventEmitter<CreateUser> = new EventEmitter();
   @Output() createNewGame: EventEmitter<null> = new EventEmitter();
 
-  whiteId: number = 0;
-  blackId: number = 0;
+  idWhite: number = 0;
+  idBlack: number = 0;
 
   constructor(private dataService: DataService) {
   }
@@ -29,8 +29,8 @@ export class UsersComponent {
     this.dataService.createUserDS({ name, passWord });
   }
 
-  createGame(whitePassWord, blackPassWord) {
-    this.dataService.createGameDS({ whiteId: this.whiteId, blackId: this.blackId, whitePassWord, blackPassWord });
+  createGame(passWordWhite, passWordBlack) {
+    this.dataService.createGameDS({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
     this.createNewGame.emit();
   }
 }

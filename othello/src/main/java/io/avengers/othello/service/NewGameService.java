@@ -35,6 +35,8 @@ public class NewGameService {
     void after(){
     	System.out.println("Post construct in universeService");
     	this.userDao = new UserDao(em);
+    	this.gameDao = new GameDao(em);
+    	this.tokenDao = new TokenDao(em);
     }
     
     public List<UserDto> findAllUser(){
@@ -62,7 +64,7 @@ public class NewGameService {
     	
     	User userBlack = userDao.findById(gameDto.getIdBlack()).orElseThrow(NotFoundException::new);
     	User userWhite = userDao.findById(gameDto.getIdWhite()).orElseThrow(NotFoundException::new);
-    	
+    	System.out.println("============================================" + userBlack.getName());
     	//if(gameDto.getPasswordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
         	Game game = new Game(userBlack, userWhite);
         	gameDao.create(game);

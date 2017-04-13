@@ -12,10 +12,10 @@ export interface Game {
 }
 
 export interface CreateGame {
-    whiteId : number;
-    blackId : number;
-    whitePassWord : String;
-    blackPassWord : String;
+    idWhite : number;
+    idBlack : number;
+    passWordWhite : String;
+    passWordBlack : String;
 }
 
 export interface CreateUser {

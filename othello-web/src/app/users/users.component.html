@@ -4,13 +4,13 @@
 </h1>
 <div>
   Player 1 :
-  <app-users-list (selected)="whiteId=$event"></app-users-list>
-  <input type="text" #whitePassWord>
+  <app-users-list (selected)="idWhite=$event"></app-users-list>
+  <input type="text" #passWordWhite>
 </div>
 <div>
   Player 2 :
-  <app-users-list (selected)="blackId=$event"></app-users-list>
-  <input type="text" #blackPassWord>
+  <app-users-list (selected)="idBlack=$event"></app-users-list>
+  <input type="text" #passWordBlack>
 </div>
 <h2>
   Créer un nouvelle utilisateur
@@ -20,5 +20,5 @@
   <input type="text" #passWord>
   <button (click)='createUser(name.value, passWord.value)'>Créer utilisateur</button>
 </div>
-<button (click)='createGame(whitePassWord.value, blackPassWord.value)'>Créer une partie</button>
+<button (click)='createGame(passWordWhite.value, passWordBlack.value)'>Créer une partie</button>
 ================================================================================================
