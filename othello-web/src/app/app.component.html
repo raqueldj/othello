@@ -1,17 +1,17 @@
 <h1>Othello</h1>
 
 <div>Menu
-  <app-menu></app-menu>
+  <app-menu *ngIf = "state == 'Menu'"></app-menu>
 </div>
 
 <div>Users List
-  <app-users></app-users>
+  <app-users *ngIf = "state == 'Users'"></app-users>
 </div>
 
 <div>Games running List
-  <app-games-running></app-games-running>
+  <app-games-running *ngIf = "state == 'GamesRunning'"></app-games-running>
 </div>
 
 <div>Game
-  <app-game></app-game>
+  <app-game *ngIf = "state == 'Game'"></app-game>
 </div>

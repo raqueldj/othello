@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
 
+import { ScreenState } from './modele';
+
 
 @Component({
   selector: 'app-root',
@@ -15,4 +17,11 @@ export class AppComponent {
    this.dataService = dataservice;
 
  }
+
+ state: ScreenState = {
+   Menu : "Menu",
+   Users: "Users",
+   GamesRunning: "GamesRunning",
+   Game: "Game"
+  }
 }

@@ -48,3 +48,10 @@ export interface Replay {
     id1 : number;
     id2 : number;
 }
+
+export interface ScreenState{
+    Menu: string;
+    Users: string;
+    GamesRunning: string;
+    Game: string;
+}
