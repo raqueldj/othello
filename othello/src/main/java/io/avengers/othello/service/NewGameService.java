@@ -38,18 +38,12 @@ public class NewGameService {
     	
     	List<User> users = new ArrayList<>();
     	users = userDao.findAll();
-    	System.out.println("====================================================" + users.iterator().next().getName());
     	List<UserDto> usersDto = new ArrayList<>();
-    	UserDto userDto = new UserDto();
     	
     	for(User user: users){
-    		userDto.setId(user.getId());
-    		userDto.setName(user.getName());
-    		userDto.setPassWord(user.getPassWord());
-    		
-    		usersDto.add(userDto);
+    		usersDto.add(new UserDto(user.getId(), user.getName(), user.getPassWord()));
     	}
-    	System.out.println("=============================================" + userDto.getName());
+
     	return usersDto;
     }
     
@@ -58,7 +52,6 @@ public class NewGameService {
     	User user = new User();
     	user.setName(userDto.getName());
     	user.setPassWord(userDto.getPassWord());
-    	System.out.println("=======================================================" + userDto.getName());
     	userDao.create(user);
     }
     
@@ -70,9 +63,6 @@ public class NewGameService {
     	if(gameDto.getPasswordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
         	Game game = new Game(userBlack, userWhite);
         	gameDao.create(game);
-    	}else{
-    		
-    	}
-    	
+    	}    	
     }
 }
