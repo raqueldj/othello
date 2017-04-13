@@ -27,6 +27,7 @@ export interface CreateToken {
     x : number;
     y : number;
     isWhite : boolean;
+    idGame : number; 
 }
 
 export interface GameState {

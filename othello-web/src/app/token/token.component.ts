@@ -17,13 +17,14 @@ export class TokenComponent {
   constructor(private dataService: DataService) {
   }
 
-  createToken(x, y, isWhite) {
+  createToken(x, y, isWhite, idGame) {
     this.position.emit({
       x,
       y,
-      isWhite
+      isWhite,
+      idGame
     });
 
-    this.dataService.createToken({ x, y, isWhite });
+    this.dataService.createToken({ x, y, isWhite, idGame });
   }
 }
