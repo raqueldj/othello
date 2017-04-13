@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import io.avengers.othello.dto.CreateTokenDto;
 import io.avengers.othello.dto.GameStateDto;
+import io.avengers.othello.dto.TokenCreatedDto;
 import io.avengers.othello.service.GameService;
 
 @Path("game")
@@ -35,14 +36,14 @@ public class GameWs {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public int createToken(CreateTokenDto createTokenDto){
+	public TokenCreatedDto createToken(CreateTokenDto createTokenDto){
 		
-		return service.createToken(createTokenDto).getId();
+		return service.createToken(createTokenDto);
 	}
 	
 	@PUT
-	public void play(int id){
-		service.play(id);
+	public void play(TokenCreatedDto tokenCreated){
+		service.play(tokenCreated);
 		
 	}
 	
