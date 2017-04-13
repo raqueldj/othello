@@ -9,6 +9,12 @@ public class GameDto {
 		super();
 	}
 
+	public GameDto(int id, UserDto playerWhite, UserDto playerBlack) {
+		this.id = id;
+		this.playerWhite = playerWhite;
+		this.playerBlack = playerBlack;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

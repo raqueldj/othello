@@ -61,9 +61,9 @@ public class NewGameService {
     	User userBlack = userDao.findById(gameDto.getIdBlack()).orElseThrow(NotFoundException::new);
     	User userWhite = userDao.findById(gameDto.getIdWhite()).orElseThrow(NotFoundException::new);
     	
-    	if(gameDto.getPasswordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
+    	//if(gameDto.getPasswordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
         	Game game = new Game(userBlack, userWhite);
         	gameDao.create(game);
-    	}    	
+    	//}    	
     }
 }
