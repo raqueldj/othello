@@ -15,7 +15,7 @@
   Créer un nouvelle utilisateur
 </h2>
 <div>
-  <input type="text">
-  <input type="text">
-  <button>Créer utilisateur</button>
+  <input type="text" #name>
+  <input type="text" #password>
+  <button (click)='createUser(name.value, passord.value)'>Créer utilisateur</button>
 </div>
