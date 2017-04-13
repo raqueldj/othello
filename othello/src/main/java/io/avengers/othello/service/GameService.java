@@ -103,28 +103,24 @@ System.out.println("==================================== playable :"+playable);
 	public TokenCreatedDto createToken(CreateTokenDto createTokenDto) {
 		GameStateDto gameStateDto = getState(createTokenDto.getGameId());
 
-		TokenCreatedDto createdToken = new TokenCreatedDto();
+		
 		Game game = gdao.findById(createTokenDto.getGameId()).orElseThrow(NotFoundException::new);
 
 		if (isPlayable(createTokenDto.getX(), createTokenDto.getX(), gameStateDto)) {
 
-			Token newToken = new Token();
-			newToken.setGame(game);
-			newToken.setIsWhite(gameStateDto.isWhitePlays());
-			newToken.setX(createTokenDto.getX());
-			newToken.setY(createTokenDto.getY());
+			Token newToken = new Token(gameStateDto.isWhitePlays(),createTokenDto.getX(),createTokenDto.getY(),game);
+	
 			tdao.create(newToken);
-			createdToken.setHasBeenCreated(true);
-			createdToken.setTokenId(newToken.getId());
-			createdToken.setGameId(createTokenDto.getGameId());
+			
+			TokenCreatedDto createdToken = new TokenCreatedDto(newToken.getId(),true,createTokenDto.getGameId());
+			return createdToken;
 
 		} else {
-			createdToken.setHasBeenCreated(false);
-			createdToken.setTokenId(0);
-			createdToken.setGameId(createTokenDto.getGameId());
+			TokenCreatedDto createdToken = new TokenCreatedDto(0,false,createTokenDto.getGameId());
+			return createdToken;
 		}
 
-		return createdToken;
+		
 
 	}
 

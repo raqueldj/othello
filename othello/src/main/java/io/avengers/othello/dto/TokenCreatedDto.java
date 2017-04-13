@@ -6,6 +6,15 @@ public class TokenCreatedDto {
 	boolean hasBeenCreated;
 	int gameId;
 	
+	
+	
+	public TokenCreatedDto() {
+	}
+	public TokenCreatedDto(int tokenId, boolean hasBeenCreated, int gameId) {
+		this.tokenId = tokenId;
+		this.hasBeenCreated = hasBeenCreated;
+		this.gameId = gameId;
+	}
 	public int getTokenId() {
 		return tokenId;
 	}
