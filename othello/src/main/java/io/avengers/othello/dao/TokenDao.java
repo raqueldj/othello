@@ -48,4 +48,15 @@ public class TokenDao {
 				.getResultList();
 				
 	}
+	
+	public Token findByXY(int id, int x, int y){
+		Game game=em.find(Game.class, id);
+		String query = "SELECT t from Token t WHERE t.x = :x AND t.y = :y AND t.game = :game";
+		
+		return em.createQuery(query, Token.class)
+				.setParameter("x", x)
+				.setParameter("y", y)
+				.setParameter("game", game)
+				.getSingleResult();
+	}
 }
