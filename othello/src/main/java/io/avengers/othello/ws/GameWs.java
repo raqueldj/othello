@@ -31,11 +31,11 @@ public class GameWs {
 	
 	}
 	
-	@PUT
+	/*@PUT
 	@Path("could-play")
 	public void couldPlay(int id){
 		service.couldPlay(id);
-	}
+	}*/
 	
 
 	@POST

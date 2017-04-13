@@ -21,6 +21,4 @@ public class CreateUserDto {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	
-	
 }

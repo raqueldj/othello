@@ -3,6 +3,7 @@ package io.avengers.othello.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -27,9 +28,17 @@ public class NewGameService {
     @PersistenceContext
     EntityManager em;
     
+    @PostConstruct
+    void after(){
+    	System.out.println("Post construct in universeService");
+    	this.userDao = new UserDao(em);
+    }
+    
     public List<UserDto> findAllUser(){
     	
-    	List<User> users = userDao.findAll();
+    	List<User> users = new ArrayList<>();
+    	users = userDao.findAll();
+    	System.out.println("====================================================" + users.iterator().next().getName());
     	List<UserDto> usersDto = new ArrayList<>();
     	UserDto userDto = new UserDto();
     	
@@ -40,12 +49,16 @@ public class NewGameService {
     		
     		usersDto.add(userDto);
     	}
+    	System.out.println("=============================================" + userDto.getName());
     	return usersDto;
     }
     
     public void createUser(CreateUserDto userDto){
     	
-    	User user = new User(userDto.getName(), userDto.getPassWord());
+    	User user = new User();
+    	user.setName(userDto.getName());
+    	user.setPassWord(userDto.getPassWord());
+    	System.out.println("=======================================================" + userDto.getName());
     	userDao.create(user);
     }
     
