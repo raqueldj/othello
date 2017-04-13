@@ -1,7 +1,7 @@
 <h1>Othello</h1>
 
 <div>Menu
-  <app-menu *ngIf = "state == 'Menu'"></app-menu>
+  <app-menu *ngIf = "state == 'Menu'" (newGame)="state='Users'" (loadGame)="state='GamesRunning'"></app-menu>
 </div>
 
 <div>Users List
