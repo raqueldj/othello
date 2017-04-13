@@ -10,13 +10,24 @@ public class GameStateDto {
 	boolean whitePlays;
 
 	public GameStateDto() {
-		set[4][4]=2;
-		set[5][5]=2;
-		set[4][5]=1;
-		set[5][4]=1;
-		
-		
+				
 	}
+	
+	
+
+	public GameStateDto(int[][] set, UserDto playerWhite, UserDto playerBlack, int scorePW, int scorePB,
+			boolean isRunning, boolean whitePlays) {
+		super();
+		this.set = set;
+		this.playerWhite = playerWhite;
+		this.playerBlack = playerBlack;
+		this.scorePW = scorePW;
+		this.scorePB = scorePB;
+		this.isRunning = isRunning;
+		this.whitePlays = whitePlays;
+	}
+
+
 
 	public int[][] getSet() {
 		return set;

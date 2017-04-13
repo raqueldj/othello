@@ -17,6 +17,7 @@ import io.avengers.othello.domain.Game;
 import io.avengers.othello.domain.Token;
 import io.avengers.othello.dto.CreateTokenDto;
 import io.avengers.othello.dto.GameStateDto;
+import io.avengers.othello.dto.UserDto;
 
 @Stateless
 @Named
@@ -38,40 +39,31 @@ public class GameService {
 	}
 
 	public GameStateDto getState(int id) {
-		GameStateDto gameStateDto = new GameStateDto();
+		
 		Game game = gdao.findById(id).orElseThrow(NotFoundException::new);
 		List<Token> tokens = new ArrayList<>();
 		tokens = tdao.findByGame(id);
+		
+		UserDto playerBlack = new UserDto(game.getId(), game.getBlackUser().getName());
+		UserDto playerWhite = new UserDto(game.getId(), game.getWhiteUser().getName());
 
 		int ws = 0;
 		int bs = 0;
-
+		int[][] set = new int[8][8];
+		
 		for (Token token : tokens) {
 
 			if (token.getIsWhite()) {
-				gameStateDto.getSet()[token.getX()][token.getY()] = 2;
+				set[token.getX()][token.getY()] = 2;
 				ws = ws + 1;
 			} else {
-				gameStateDto.getSet()[token.getX()][token.getY()] = 1;
+				set[token.getX()][token.getY()] = 1;
 				bs = bs + 1;
 			}
 
 		}
 
-		gameStateDto.getPlayerBlack().setId(game.getBlackUser().getId());
-		gameStateDto.getPlayerBlack().setName(game.getBlackUser().getName());
-		gameStateDto.getPlayerBlack().setPassWord(game.getBlackUser().getPassWord());
-
-		gameStateDto.getPlayerWhite().setId(game.getWhiteUser().getId());
-		gameStateDto.getPlayerWhite().setName(game.getWhiteUser().getName());
-		gameStateDto.getPlayerWhite().setPassWord(game.getWhiteUser().getPassWord());
-
-		gameStateDto.setScorePB(bs);
-		gameStateDto.setScorePW(ws);
-
-		gameStateDto.setRunning(game.isRunning());
-
-		gameStateDto.setWhitePlays(game.isWhitePlays());
+		GameStateDto gameStateDto= new GameStateDto(set, playerWhite, playerBlack, ws, bs, game.isRunning(), game.isWhitePlays());
 		
 		boolean playable = false;
 		int playingColor = 1;
