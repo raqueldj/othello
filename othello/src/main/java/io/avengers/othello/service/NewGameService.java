@@ -32,6 +32,7 @@ public class NewGameService {
     void after(){
     	System.out.println("Post construct in universeService");
     	this.userDao = new UserDao(em);
+    	this.gameDao = new GameDao(em);
     }
     
     public List<UserDto> findAllUser(){
