@@ -50,10 +50,10 @@ public class GameService {
 
 			if (token.getIsWhite()) {
 				gameStateDto.getSet()[token.getX()][token.getY()] = 2;
-				ws = ws+1;
+				ws = ws + 1;
 			} else {
 				gameStateDto.getSet()[token.getX()][token.getY()] = 1;
-				bs = bs+1;
+				bs = bs + 1;
 			}
 
 		}
@@ -68,21 +68,111 @@ public class GameService {
 
 		gameStateDto.setScorePB(bs);
 		gameStateDto.setScorePW(ws);
-		
+
 		gameStateDto.setRunning(game.isRunning());
-		
+
 		gameStateDto.setWhitePlays(game.isWhitePlays());
 		
+		boolean playable = false;
+		int playingColor = 1;
+		int adverseColor = 2;
 
+		if (gameStateDto.isWhitePlays()) {
+			playingColor = 2;
+			adverseColor = 1;
+		}
+		
+		for (int i = 1; i <= 8; i++) {
+			for (int j = 1; j <= 8; j++) {
+				if (i + 2 < 8) {
+					if (gameStateDto.getSet()[i + 1][j] == adverseColor) {
+						for (int k = i + 2; k <= 8; k++) {
+							if (gameStateDto.getSet()[k][j] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i + 1][j - 1] == adverseColor) {
+					if (i + 2 < 8 && j > 2) {
+						int max = Math.min(j - 1, 8 - i);
+						for (int k = 2; k <= max; k++) {
+							if (gameStateDto.getSet()[i + k][j - k] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i][j - 1] == adverseColor) {
+					if (j > 2) {
+						for (int k = j - 2; k >= 0; k--) {
+							if (gameStateDto.getSet()[i][k] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i - 1][j - 1] == adverseColor) {
+					if (i > 2 && j > 2) {
+						int max = Math.min(j - 1, i - 1);
+						for (int k = 2; k <= max; k++) {
+							if (gameStateDto.getSet()[i - k][j - k] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i - 1][j] == adverseColor) {
+					if (i > 2) {
+						for (int k = i - 2; k >= 0; k--) {
+							if (gameStateDto.getSet()[k][j] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i - 1][j + 1] == adverseColor) {
+					if (i > 2 && j + 2 < 8) {
+						int max = Math.min(8 - j, i - 1);
+						for (int k = 2; k <= max; k++) {
+							if (gameStateDto.getSet()[i - k][j + k] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i][j + 1] == adverseColor) {
+					if (j + 2 < 8) {
+						for (int k = j + 2; k <= 8; k++) {
+							if (gameStateDto.getSet()[i][k] == playingColor) {
+								playable = true;
+							}
+						}
+					}
+				}
+				if (gameStateDto.getSet()[i + 1][j + 1] == adverseColor) {
+					if (i + 2 < 8 && j + 2 < 8) {
+						int max = Math.min(8 - j, 8 - i);
+						for (int k = 2; k <= max; k++) {
+							if (gameStateDto.getSet()[i + k][j + k] == playingColor) {
+								playable = true;
+							}
+						}
+
+					}
+				}
+			}
+
+		}
+
+		if (!playable){
+			gameStateDto.setWhitePlays(!gameStateDto.isWhitePlays());
+		}
 		return gameStateDto;
 	}
 
-	public void couldPlay(int id){
-		
-		
-		
-	}
 	
+
 	public Token createToken(CreateTokenDto createTokenDto) {
 
 		return null;

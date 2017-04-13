@@ -5,6 +5,7 @@ public class CreateTokenDto {
 	int x;
 	int y;
 	boolean isWhite;
+	int gameId;
 	
 	
 	
@@ -28,4 +29,12 @@ public class CreateTokenDto {
 	public void setWhite(boolean isWhite) {
 		this.isWhite = isWhite;
 	}
+	public int getGameId() {
+		return gameId;
+	}
+	public void setGameId(int gameId) {
+		this.gameId = gameId;
+	}
+	
+	
 }
