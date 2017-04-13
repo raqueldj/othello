@@ -20,6 +20,8 @@ export class UsersComponent {
       name,
       passWord
     });
+    console.log(name);
+    console.log(passWord);
     this.dataService.createUserDS({name, passWord});
   }
 }
