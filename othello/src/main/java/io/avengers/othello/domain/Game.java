@@ -24,6 +24,8 @@ public class Game {
 	
 	private boolean whitePlays=false;
 	
+	private Integer missedTurn=0;
+	
 	public boolean isWhitePlays() {
 		return whitePlays;
 	}
@@ -31,6 +33,8 @@ public class Game {
 	public void setWhitePlays(boolean whitePlays) {
 		this.whitePlays = whitePlays;
 	}
+	
+	
 
 	public Game(){
 		
@@ -39,6 +43,7 @@ public class Game {
 	public Game(User whiteUser,User blackUser){
 		this.whiteUser = whiteUser;
 		this.blackUser=blackUser;
+		this.missedTurn=0;
 	}
 
 	public Game( User whiteUser, User blackUser, boolean isRunning) {
@@ -81,6 +86,16 @@ public class Game {
 
 	public void setRunning(boolean isRunning) {
 		this.isRunning = isRunning;
+	}
+
+	
+	
+	public Integer getMissedTurn() {
+		return missedTurn;
+	}
+
+	public void setMissedTurn(Integer missedTurn) {
+		this.missedTurn = missedTurn;
 	}
 
 	@Override

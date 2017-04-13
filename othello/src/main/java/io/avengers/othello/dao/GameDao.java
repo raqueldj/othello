@@ -60,4 +60,9 @@ public class GameDao {
 		Game g=em.find(Game.class, gameId);
 		g.setRunning(false);
 	}
+	
+	public void missedTurn(Integer gameId){
+		Game g=em.find(Game.class, gameId);
+		g.setMissedTurn(g.getMissedTurn()+1);
+	}
 }
