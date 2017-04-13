@@ -1,6 +1,7 @@
 package io.avengers.othello;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -38,6 +39,17 @@ public class CorsFilter implements Filter {
 
 		if (response instanceof HttpServletResponse)
 			((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
+		/*{
+			HttpServletResponse res = (HttpServletResponse) response;
+		    res.setHeader("Access-Control-Allow-Origin", "*");
+		    res.setHeader("Access-Control-Allow-Methods", "POST, GET");
+		    res.setHeader("Access-Control-Max-Age", "3600");
+		    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+		    chain.doFilter(request, response);
+		}*/
+			
+			//((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
+		
 
 		chain.doFilter(request, response);
 	}
