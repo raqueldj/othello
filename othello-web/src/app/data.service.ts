@@ -29,7 +29,7 @@ export class DataService {
     createUserDS(user: CreateUser): Promise<CreateUser> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
+        console.log(user);
         return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", user , options)
             .toPromise()
             .then((response) => { return response.json() });

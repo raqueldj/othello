@@ -37,19 +37,11 @@ public class CorsFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		if (response instanceof HttpServletResponse)
+		if (response instanceof HttpServletResponse){
 			((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-		/*{
-			HttpServletResponse res = (HttpServletResponse) response;
-		    res.setHeader("Access-Control-Allow-Origin", "*");
-		    res.setHeader("Access-Control-Allow-Methods", "POST, GET");
-		    res.setHeader("Access-Control-Max-Age", "3600");
-		    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-		    chain.doFilter(request, response);
-		}*/
-			
-			//((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-		
+			((HttpServletResponse) response).addHeader("Access-Control-Allow-Methods", "POST, GET");
+			((HttpServletResponse) response).addHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+		}
 
 		chain.doFilter(request, response);
 	}
