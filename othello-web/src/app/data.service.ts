@@ -32,7 +32,7 @@ export class DataService {
             .then((response) => { return response.json() });
     }
 
-    createUser(user: CreateUser): Promise<CreateUser> {
+    createUserDS(user: CreateUser): Promise<CreateUser> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 

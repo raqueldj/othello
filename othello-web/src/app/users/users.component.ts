@@ -9,6 +9,17 @@ import { DataService } from '../data.service';
   styleUrls: ['./users.component.css'],
   providers: [DataService]
 })
-export class UsersComponent{
+export class UsersComponent {
+  @Output() createUserOutput: EventEmitter<CreateUser> = new EventEmitter();
 
+  constructor(private dataService: DataService) {
+  }
+
+  createUser(name, passWord) {
+    this.createUserOutput.emit({
+      name,
+      passWord
+    });
+    this.dataService.createUserDS({name, passWord});
+  }
 }
