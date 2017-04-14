@@ -69,7 +69,7 @@ public class GameService {
 
 		}
 
-		GameStateDto gameStateDto = new GameStateDto(set, playerWhite, playerBlack, ws, bs, game.isRunning(),
+		GameStateDto gameStateDto = new GameStateDto(id, set, playerWhite, playerBlack, ws, bs, game.isRunning(),
 				game.isWhitePlays());
 
 		

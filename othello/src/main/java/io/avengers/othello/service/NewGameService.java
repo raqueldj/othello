@@ -73,14 +73,13 @@ public class NewGameService {
         	tokenDao.create(new Token(true, 5, 5, game));
         	tokenDao.create(new Token(false, 4, 5, game));
         	tokenDao.create(new Token(false, 5, 4, game));
-<<<<<<< HEAD
+
         	
         	return game.getId();
-=======
-    	//}
 
 
->>>>>>> e8f8706ae2880f325e0a37f5b06bcd5d291f63fb
+
+
     }
     
 }
