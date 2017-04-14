@@ -32,6 +32,9 @@ public class StartUpService {
 
 		
 		Game game = new Game(bob,jack);
+		Game game1 = new Game(bob,boby);
+		Game game2 = new Game(jack,boby);
+		
 		Token token1 = new Token(false, 4,5,game);
 		Token token2 = new Token(false, 5,4,game);
 		Token token3 = new Token(true, 4,4,game);
@@ -42,6 +45,8 @@ public class StartUpService {
 		em.persist(bob);
 		em.persist(jack);
 		em.persist(game);
+		em.persist(game1);
+		em.persist(game2);
 		em.persist(token1);
 		em.persist(token2);
 		em.persist(token3);
