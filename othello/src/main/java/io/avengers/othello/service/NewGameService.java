@@ -52,16 +52,14 @@ public class NewGameService {
     	return usersDto;
     }
 
-    public int findUserId(CreateUserDto userDto){
-    	return userDao.findIdByName(userDto.getName());
-    }
-    
-    public void createUser(CreateUserDto userDto){
+    public int createUser(CreateUserDto userDto){
     	
     	User user = new User();
     	user.setName(userDto.getName());
     	user.setPassWord(userDto.getPassWord());
     	userDao.create(user);
+    	System.out.println("==============================================" + user.getId());
+    	return user.getId();
     }
     
     public void createGame(CreateGameDto gameDto){

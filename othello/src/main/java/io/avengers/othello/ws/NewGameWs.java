@@ -28,18 +28,11 @@ public class NewGameWs {
 		return service.findAllUser();
 	}
 	
-	@GET
-	@Path("id")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public int findUserId(CreateUserDto userDto){
-		return service.findUserId(userDto);
-	}
-	
 	@POST
 	@Path("user")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createUser(CreateUserDto userDto){
-		service.createUser(userDto);
+	public int createUser(CreateUserDto userDto){
+		return service.createUser(userDto);
 	}
 
 	@POST
