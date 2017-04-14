@@ -25,7 +25,7 @@ export interface CreateUser {
 export interface CreateToken {
     x : number;
     y : number;
-    idGame : number; 
+    gameId : number; 
 }
 
 export interface GameState {
@@ -46,4 +46,9 @@ export interface LoadGame {
 export interface Replay {
     id1 : number;
     id2 : number;
+}
+
+export interface Coordonnees {
+    x:number;
+    y:number;
 }
