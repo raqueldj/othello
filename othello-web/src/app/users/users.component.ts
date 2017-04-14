@@ -15,6 +15,7 @@ export class UsersComponent {
 
   idWhite: number = 0;
   idBlack: number = 0;
+  idCreate: number;
   users: User[];
 
   constructor(private dataService: DataService) {
@@ -32,9 +33,8 @@ export class UsersComponent {
     });
     console.log(name);
     console.log(passWord);
-    this.dataService.createUserDS({ name, passWord });
-    //this.dataService.getUsers(users)
-    this.users.push({id:1, name:name,passWord:passWord});
+    this.dataService.createUserDS({ name, passWord }).then(Response => { this.idCreate = Response; console.log(this.idCreate) });
+    this.users.push({ id: this.idCreate, name: name, passWord: passWord });
 
   }
 
