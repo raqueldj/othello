@@ -38,10 +38,8 @@ public class NewGameWs {
 	@POST
 	@Path("game")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createGame(CreateGameDto gameDto){
-		System.out.println("============================================");
-		service.createGame(gameDto);
-    	System.out.println("============================================" + gameDto.getPassWordBlack());
+	public int createGame(CreateGameDto gameDto){
+		return service.createGame(gameDto);
 
 	}
 }
