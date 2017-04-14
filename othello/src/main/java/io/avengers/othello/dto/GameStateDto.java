@@ -1,6 +1,7 @@
 package io.avengers.othello.dto;
 
 public class GameStateDto {
+	int id;
 	int set[][];
 	UserDto playerWhite;
 	UserDto playerBlack;
@@ -24,9 +25,10 @@ public class GameStateDto {
 	
 	
 
-	public GameStateDto(int[][] set, UserDto playerWhite, UserDto playerBlack, int scorePW, int scorePB,
+	public GameStateDto(int id, int[][] set, UserDto playerWhite, UserDto playerBlack, int scorePW, int scorePB,
 			boolean isRunning, boolean whitePlays) {
 		super();
+		this.id=id;
 		this.set = set;
 		this.playerWhite = playerWhite;
 		this.playerBlack = playerBlack;
@@ -34,6 +36,18 @@ public class GameStateDto {
 		this.scorePB = scorePB;
 		this.isRunning = isRunning;
 		this.whitePlays = whitePlays;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

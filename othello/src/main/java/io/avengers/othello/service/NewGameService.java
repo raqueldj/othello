@@ -62,7 +62,7 @@ public class NewGameService {
     	return user.getId();
     }
     
-    public void createGame(CreateGameDto gameDto){
+    public int createGame(CreateGameDto gameDto){
     	
     	User userBlack = userDao.findById(gameDto.getIdBlack()).orElseThrow(NotFoundException::new);
     	User userWhite = userDao.findById(gameDto.getIdWhite()).orElseThrow(NotFoundException::new);
@@ -73,7 +73,11 @@ public class NewGameService {
         	tokenDao.create(new Token(true, 5, 5, game));
         	tokenDao.create(new Token(false, 4, 5, game));
         	tokenDao.create(new Token(false, 5, 4, game));
-    	//}
+
+        	
+        	return game.getId();
+
+
 
 
     }

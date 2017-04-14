@@ -8,7 +8,6 @@ export interface Game {
     id : number;
     whiteUser : User;
     blackUser : User;
-    running : boolean;
 }
 
 export interface CreateGame {
