@@ -48,8 +48,8 @@ public class GameService {
 		List<Token> tokens = new ArrayList<>();
 		tokens = tdao.findByGame(id);
 
-		UserDto playerBlack = new UserDto(game.getId(), game.getBlackUser().getName());
-		UserDto playerWhite = new UserDto(game.getId(), game.getWhiteUser().getName());
+		UserDto playerBlack = new UserDto(game.getBlackUser().getId(), game.getBlackUser().getName(),game.getBlackUser().getPassWord());
+		UserDto playerWhite = new UserDto(game.getWhiteUser().getId(), game.getWhiteUser().getName(),game.getWhiteUser().getPassWord());
 
 		int ws = 0;
 		int bs = 0;
@@ -87,6 +87,9 @@ System.out.println("==================================== playable :"+playable);
 			gdao.missedTurn(id);
 			gdao.nextPlayer(id);
 			game.setMissedTurn(game.getMissedTurn()+1);
+		} else{
+			gdao.playedTurn(id);
+			game.setMissedTurn(0);
 		}
 		
 		if(game.getMissedTurn()==2 || ws+bs==64){
@@ -105,14 +108,32 @@ System.out.println("==================================== playable :"+playable);
 
 		
 		Game game = gdao.findById(createTokenDto.getGameId()).orElseThrow(NotFoundException::new);
-
-		if (isPlayable(createTokenDto.getX(), createTokenDto.getX(), gameStateDto)) {
+System.out.println("======================================Before test if is playable for token:"+createTokenDto.getX()+createTokenDto.getY());
+		if (isPlayable(createTokenDto.getX(), createTokenDto.getY(), gameStateDto)) {
 
 			Token newToken = new Token(gameStateDto.isWhitePlays(),createTokenDto.getX(),createTokenDto.getY(),game);
-	
+	System.out.println("========================= X:"+newToken.getX());
+	System.out.println("========================= Y:"+newToken.getY());
 			tdao.create(newToken);
 			
+			
+			
 			TokenCreatedDto createdToken = new TokenCreatedDto(newToken.getId(),true,createTokenDto.getGameId());
+			System.out.println("========================= Id:"+createdToken.getTokenId());
+			
+			
+			
+			List<Token> tokensToSwitch = tokensToSwitch(createdToken, gameStateDto);
+			System.out.println("============================ first token to switch X: "+tokensToSwitch.get(0).getX()+" Y: "+tokensToSwitch.get(0).getY());
+			
+			for (Token token:tokensToSwitch){
+				System.out.println("===========================token to switch X: "+token.getX()+" Y: "+token.getY());
+				tdao.updateTokenSwitch(token.getId());
+			}
+			
+			
+			
+			gdao.nextPlayer(createTokenDto.getGameId());
 			return createdToken;
 
 		} else {
@@ -242,18 +263,18 @@ System.out.println("==================================== playable :"+playable);
 	}
 
 	public List<Token> tokensToSwitch(TokenCreatedDto tokenCreated, GameStateDto gameStateDto) {
-
+System.out.println("===================================toto1");
 		Token newToken = tdao.findById(tokenCreated.getTokenId());
 		int x = newToken.getX();
 		int y = newToken.getY();
-
+		System.out.println("===================================toto1");
 		List<Token> tokensToSwitch = new ArrayList<>();
 
-		int limiteX;
-		int limiteY;
+		System.out.println("===================================toto1");
 		int playingColor = 1;
 		int adverseColor = 2;
 		int gameId = tokenCreated.getGameId();
+		System.out.println("===================================toto1");
 		if (gameStateDto.isWhitePlays()) {
 			playingColor = 2;
 			adverseColor = 1;
@@ -263,6 +284,7 @@ System.out.println("==================================== playable :"+playable);
 				for (int k = x + 2; k <= 8; k++) {
 					if (gameStateDto.getSet()[k][y] == playingColor) {
 						for (int l = x + 1; l < k; l++) {
+							System.out.println("=============================findByXY  X: "+l+" Y: "+y);
 							tokensToSwitch.add(tdao.findByXY(gameId, l, y));
 						}
 						break;
@@ -276,7 +298,8 @@ System.out.println("==================================== playable :"+playable);
 				int max = Math.min(y - 1, 8 - x);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x + k][y - k] == playingColor) {
-						for (int l = 1; l < max - 1; l++) {
+						for (int l = 1; l < k ; l++) {
+							System.out.println("=============================findByXY  X: "+(x+l)+" Y: "+(y-l));
 							tokensToSwitch.add(tdao.findByXY(gameId, x + l, y - l));
 						}
 						break;
@@ -303,7 +326,7 @@ System.out.println("==================================== playable :"+playable);
 				int max = Math.min(y - 1, x - 1);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x - k][y - k] == playingColor) {
-						for (int l = 1; l < max - 1; l++) {
+						for (int l = 1; l < k ; l++) {
 							tokensToSwitch.add(tdao.findByXY(gameId, x - l, y - l));
 						}
 						break;
@@ -330,7 +353,7 @@ System.out.println("==================================== playable :"+playable);
 				int max = Math.min(8 - y, x - 1);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x - k][y + k] == playingColor) {
-						for (int l = 1; l < max - 1; l++) {
+						for (int l = 1; l < k ; l++) {
 							tokensToSwitch.add(tdao.findByXY(gameId, x - l, y + l));
 						}
 						break;
@@ -355,9 +378,13 @@ System.out.println("==================================== playable :"+playable);
 			if (gameStateDto.getSet()[x + 1][y + 1] == adverseColor) {
 
 				int max = Math.min(8 - y, 8 - x);
+				System.out.println("=========================== max :"+max);
 				for (int k = 2; k <= max; k++) {
+					System.out.println("=========================== k :"+k);
 					if (gameStateDto.getSet()[x + k][y + k] == playingColor) {
-						for (int l = 1; l < max - 1; l++) {
+						for (int l = 1; l < k ; l++) {
+							System.out.println("=========================== l :"+l);
+							System.out.println("================================ find by XY x : "+x+ " l: "+l +" y+: "+y+" k: "+k);
 							tokensToSwitch.add(tdao.findByXY(gameId, x + l, y + l));
 						}
 						break;
@@ -366,6 +393,7 @@ System.out.println("==================================== playable :"+playable);
 
 			}
 		}
+		System.out.println("===================================toto1");
 		return tokensToSwitch;
 
 	}
