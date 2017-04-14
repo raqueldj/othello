@@ -51,6 +51,10 @@ public class NewGameService {
 
     	return usersDto;
     }
+
+    public int findUserId(CreateUserDto userDto){
+    	return userDao.findIdByName(userDto.getName());
+    }
     
     public void createUser(CreateUserDto userDto){
     	
@@ -72,6 +76,6 @@ public class NewGameService {
         	tokenDao.create(new Token(true, 5, 5, game));
         	tokenDao.create(new Token(false, 4, 5, game));
         	tokenDao.create(new Token(false, 5, 4, game));
-
     }
+    
 }

@@ -26,6 +26,11 @@ public class UserDao {
 		return Optional.ofNullable(u);
 	}
 	
+	public int findIdByName(String name){
+		User u = em.find(User.class, name);
+		return u.getId();
+	}
+	
 	public User create(User user){
 		em.persist(user);
 		return user;
