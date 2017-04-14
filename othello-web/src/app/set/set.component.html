@@ -1,3 +1,8 @@
-<p>
-  set works!
-</p>
+==========================================================================
+<table id="myTable">
+   <tr *ngFor="let valueI of [0, 1, 2, 3, 4, 5, 6, 7]; let i=index">
+      <td *ngFor="let valueJ of [0, 1, 2, 3, 4, 5, 6, 7]; let j=index" (click)="getCoordonnee(i,j)"><img src="carrevert.png"/></td>
+   </tr>
+</table>
+
+==========================================================================

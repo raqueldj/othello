@@ -26,7 +26,6 @@ export interface CreateUser {
 export interface CreateToken {
     x : number;
     y : number;
-    isWhite : boolean;
     idGame : number; 
 }
 
