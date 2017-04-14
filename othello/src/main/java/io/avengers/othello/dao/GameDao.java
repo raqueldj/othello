@@ -66,6 +66,11 @@ public class GameDao {
 		g.setMissedTurn(g.getMissedTurn()+1);
 	}
 	
+	public void playedTurn(Integer gameId){
+		Game g=em.find(Game.class, gameId);
+		g.setMissedTurn(0);
+	}
+	
 	public void nextPlayer(Integer gameId){
 		Game g=em.find(Game.class, gameId);
 		g.setWhitePlays(!g.isWhitePlays());

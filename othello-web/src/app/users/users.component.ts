@@ -15,12 +15,15 @@ export class UsersComponent {
 
   idWhite: number = 0;
   idBlack: number = 0;
+  users: User[];
 
   constructor(private dataService: DataService) {
-        this.dataService.getUsers().then(users => this.users = users);
-
+    this.dataService.getUsers().then(users => {
+      this.idBlack = users[0].id;
+      this.idWhite = users[0].id;
+      this.users = users;
+    });
   }
-  users: User[];
 
   createUser(name, passWord) {
     this.createUserOutput.emit({
@@ -30,12 +33,14 @@ export class UsersComponent {
     console.log(name);
     console.log(passWord);
     this.dataService.createUserDS({ name, passWord });
+    //this.dataService.getUsers(users)
+    this.users.push({id:1, name:name,passWord:passWord});
+
   }
 
   createGame(passWordWhite, passWordBlack) {
     this.dataService.createGameDS({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
     this.createNewGame.emit();
-    this.dataService.getUsers().then(users => this.users = users);
   }
-  
+
 }
