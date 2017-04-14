@@ -29,6 +29,7 @@ export interface CreateToken {
 }
 
 export interface GameState {
+    id: number;
     set : number[][];
     WhiteUser : User;
     BlackUser : User;
