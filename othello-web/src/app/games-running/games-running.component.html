@@ -1,10 +1,10 @@
 <h2>Games running</h2>
 
-<div>
-    <ul>
-        <li *ngFor="let game of games;" value="{{game.id}}">{{game.id}} - {{game.playerWhite.name}} - {{game.playerBlack.name}}</li>
-    </ul>
+<div class="gamesRunning" *ngFor="let game of games;">
+    <label>
+        <input type="radio" (change)='onSelectGame(game.id)' name="game" value="{{game.id}}">{{game.id}} - {{game.playerWhite.name}} - {{game.playerBlack.name}}
+    </label><br/>
 </div>
 
 
-<div><button (click)='onloadGame()'>Load Game</button></div>
+<div><button (click)='onloadGame()' [disabled]='selectedGameId<=0'>Load Game</button></div>

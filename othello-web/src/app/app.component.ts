@@ -8,13 +8,16 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  state = "Menu"
   title = 'app works!';
   private dataService: DataService;
 
- constructor(dataservice: DataService) {
-   this.dataService = dataservice;
+  constructor(dataservice: DataService) {
+    this.dataService = dataservice;
 
- }
+  }
 
- state = "Menu"
+  loadGame(gameId) {
+    console.log(`CHARGEMENT DE LA PARTIE ${gameId}`);
+  }
 }

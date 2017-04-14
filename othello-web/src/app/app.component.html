@@ -11,7 +11,8 @@
 </div>
 
 <div>Games running List
-  <app-games-running></app-games-running>
+  <app-games-running (loadOldGame)='loadGame($event)'></app-games-running>
+  Selected: {{id}}
   <!--<app-games-running *ngIf = "state == 'GamesRunning'" (loadOldGame)="state='Game'"></app-games-running>-->
 </div>
 

@@ -11,25 +11,22 @@ import { DataService } from '../data.service';
 })
 export class GamesRunningComponent {
   @Output() gamesRuningOutput: EventEmitter<Game> = new EventEmitter();
-  @Output() loadOldGame: EventEmitter<null> = new EventEmitter();
+  @Output() loadOldGame: EventEmitter<number> = new EventEmitter();
 
   constructor(private dataService: DataService) {
     this.dataService.getGamesRunning().then(games => this.games = games);
   }
 
-  /*getGames(id, whiteUser, blackUser, running) {
-    this.gamesRuningOutput.emit({
-      id,
-      whiteUser,
-      blackUser,
-      running
-    });
-    this.dataService.getRunningGames().then(games => this.games = games);
-  }*/
-
   games: Game[]
 
+  selectedGameId = 0;
+
+  onSelectGame(id) {
+    this.selectedGameId = id;
+  }
+
   onloadGame() {
-    this.loadOldGame.emit();
+    if (this.selectedGameId > 0)
+      this.loadOldGame.emit(this.selectedGameId);
   }
 }
