@@ -4,12 +4,12 @@
 </h1>
 <div>
   Player 1 :
-  <app-users-list (selected)="idWhite=$event"></app-users-list>
+  <app-users-list (selected)="idWhite=$event" [users]='users'></app-users-list>
   <input type="text" #passWordWhite>
 </div>
 <div>
   Player 2 :
-  <app-users-list (selected)="idBlack=$event"></app-users-list>
+  <app-users-list (selected)="idBlack=$event" [users]='users'></app-users-list>
   <input type="text" #passWordBlack>
 </div>
 <h2>
