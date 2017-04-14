@@ -18,5 +18,5 @@
 
 <div>Game
   <!--<app-game *ngIf = "state == 'Game'"></app-game>-->
-  <app-game></app-game>
+  <app-game (selectBox)='onSelectedBox($event)' [tokens]='tokens'></app-game>
 </div>

@@ -47,3 +47,8 @@ export interface Replay {
     id1 : number;
     id2 : number;
 }
+
+export interface Coordonnees {
+    x:number;
+    y:number;
+}

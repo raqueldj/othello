@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
-
+import { Coordonnees, CreateToken } from './modele';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +14,21 @@ export class AppComponent {
 
   constructor(dataservice: DataService) {
     this.dataService = dataservice;
-
   }
+
+  //tokens: Coordonnees[] = [{ x: 1, y: 2 }];
+  token: CreateToken;
+
+  /*onSelectedBox(coordonnee: Coordonnees) {
+    console.log(`yipiyeah ${coordonnee.x} ${coordonnee.y}`);
+    this.tokens.push({ x: coordonnee.x, y: coordonnee.y });
+  }*/
 
   loadGame(gameId) {
     console.log(`CHARGEMENT DE LA PARTIE ${gameId}`);
+  }
+
+  createToken(x, y, gameId) {
+    this.dataService.createToken({ x, y, idGame });
   }
 }

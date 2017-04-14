@@ -1,8 +1,13 @@
-==========================================================================
+========================================================================== NB DE TOKENS : {{tokens.length}}
 <table id="myTable">
-   <tr *ngFor="let valueI of [0, 1, 2, 3, 4, 5, 6, 7]; let i=index">
-      <td *ngFor="let valueJ of [0, 1, 2, 3, 4, 5, 6, 7]; let j=index" (click)="getCoordonnee(i,j)"><img src="carrevert.png"/></td>
-   </tr>
+    <tr *ngFor="let valueI of [0, 1, 2, 3, 4, 5, 6, 7]; let i=index">
+        <td *ngFor="let valueJ of [0, 1, 2, 3, 4, 5, 6, 7]; let j=index" (click)="getCoordonnee(j,i)">
+            <div style='position:relative; background-color: black;width:3em; height: 3em;'>
+                <img src="carrevert.png" style="position:absolute;top:0;left:0;right:0;bottom:0;" />
+                <div *ngIf='hasWhiteToken(i,j)' style='position:absolute;top:0;left:0;right:0;bottom:0;;border:1px solid black;background-color:white;border-radius: 50%;'></div>
+            </div>
+        </td>
+    </tr>
 </table>
 
 ==========================================================================
