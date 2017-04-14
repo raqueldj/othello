@@ -66,16 +66,21 @@ public class NewGameService {
     	
     	User userBlack = userDao.findById(gameDto.getIdBlack()).orElseThrow(NotFoundException::new);
     	User userWhite = userDao.findById(gameDto.getIdWhite()).orElseThrow(NotFoundException::new);
-    	//if(gameDto.getPasswordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
+    	//if(gameDto.getPassWordBlack().equals(userBlack.getPassWord()) && gameDto.getPassWordWhite().equals(userWhite.getPassWord())){
         	Game game = new Game(userBlack, userWhite);
         	gameDao.create(game);
-    	//}
         	tokenDao.create(new Token(true, 4, 4, game));
         	tokenDao.create(new Token(true, 5, 5, game));
         	tokenDao.create(new Token(false, 4, 5, game));
         	tokenDao.create(new Token(false, 5, 4, game));
+<<<<<<< HEAD
         	
         	return game.getId();
+=======
+    	//}
+
+
+>>>>>>> e8f8706ae2880f325e0a37f5b06bcd5d291f63fb
     }
     
 }

@@ -33,14 +33,16 @@ export class UsersComponent {
     });
     console.log(name);
     console.log(passWord);
-    this.dataService.createUserDS({ name, passWord }).then(Response => { this.idCreate = Response; console.log(this.idCreate) });
-    this.users.push({ id: this.idCreate, name: name, passWord: passWord });
-
+    this.dataService.createUserDS({ name, passWord })
+      .then(Response => {
+        this.idCreate = Response;
+        this.users.push({ id: Response, name: name, passWord: passWord });
+        console.log(this.idCreate);
+      });
   }
 
   createGame(passWordWhite, passWordBlack) {
     this.dataService.createGameDS({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
     this.createNewGame.emit();
   }
-
 }
