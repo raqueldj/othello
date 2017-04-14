@@ -26,7 +26,7 @@ export interface CreateUser {
 export interface CreateToken {
     x : number;
     y : number;
-    idGame : number; 
+    gameId : number; 
 }
 
 export interface GameState {

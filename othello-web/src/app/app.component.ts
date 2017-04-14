@@ -11,24 +11,23 @@ export class AppComponent {
   state = "Menu"
   title = 'app works!';
   private dataService: DataService;
+  gameId: number;
 
   constructor(dataservice: DataService) {
     this.dataService = dataservice;
   }
 
-  //tokens: Coordonnees[] = [{ x: 1, y: 2 }];
+  tokens: Coordonnees[] = [{ x: 1, y: 2 }];
   token: CreateToken;
 
-  /*onSelectedBox(coordonnee: Coordonnees) {
+  onSelectedBox(coordonnee: Coordonnees) {
     console.log(`yipiyeah ${coordonnee.x} ${coordonnee.y}`);
     this.tokens.push({ x: coordonnee.x, y: coordonnee.y });
-  }*/
-
-  loadGame(gameId) {
-    console.log(`CHARGEMENT DE LA PARTIE ${gameId}`);
+    this.dataService.createToken({ x:coordonnee.x, y:coordonnee.y, gameId:this.gameId });
   }
 
-  createToken(x, y, gameId) {
-    this.dataService.createToken({ x, y, idGame });
+  loadGame(gameId) {
+    this.gameId=gameId
+    console.log(`CHARGEMENT DE LA PARTIE ${gameId}`);
   }
 }
