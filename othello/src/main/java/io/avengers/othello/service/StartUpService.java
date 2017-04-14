@@ -32,13 +32,16 @@ public class StartUpService {
 
 		
 		Game game = new Game(bob,jack);
+		//game.setWhitePlays(true);
 		Game game1 = new Game(bob,boby);
 		Game game2 = new Game(jack,boby);
 		
-		Token token1 = new Token(false, 4,5,game);
-		Token token2 = new Token(false, 5,4,game);
-		Token token3 = new Token(true, 4,4,game);
-		Token token4 = new Token(true, 5,5,game);
+		
+		Token token1 = new Token(false, 1,1,game);
+		Token token2 = new Token(false, 1,2,game);
+		Token token3 = new Token(false, 1,3,game);
+		Token token4 = new Token(false, 2,3,game);
+		Token token5 = new Token(true,2,2,game);
 		
 		
 		em.persist(boby);
@@ -51,6 +54,7 @@ public class StartUpService {
 		em.persist(token2);
 		em.persist(token3);
 		em.persist(token4);
+		em.persist(token5);
 		
 	}
 }

@@ -9,6 +9,15 @@ public class GameStateDto {
 	boolean isRunning;
 	boolean whitePlays;
 
+
+	
+
+
+
+	
+
+
+
 	public GameStateDto() {
 				
 	}

@@ -36,16 +36,14 @@ public class GameWs {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public TokenCreatedDto createToken(CreateTokenDto createTokenDto){
+	public GameStateDto createToken(CreateTokenDto createTokenDto){
 		
 		return service.createToken(createTokenDto);
 	}
 	
-	@PUT
-	public void play(TokenCreatedDto tokenCreated){
-		service.play(tokenCreated);
-		
-	}
+	
+	
+	
 	
 	
 	
