@@ -1,7 +1,7 @@
 <h1>Othello</h1>
 
 <div>Menu
-  <app-menu></app-menu>
+  <app-menu *ngIf = "state == 'Menu'" (newGame)="state='Users'" (loadGame)="state='GamesRunning'"></app-menu>
  <!-- <app-menu *ngIf = "state == 'Menu'" (newGame)="state='Users'" (loadGame)="state='GamesRunning'"></app-menu>-->
 </div>
 
@@ -18,5 +18,5 @@
 
 <div>Game
   <!--<app-game *ngIf = "state == 'Game'"></app-game>-->
-  <app-game (addToken)='addToken($event)' [gameState]='gameState' *ngIf = "state == 'Game'"></app-game>
+  <app-game (selectBox)='addToken($event)' [gameState]='gameState' *ngIf = "state == 'Game'"></app-game>
 </div>

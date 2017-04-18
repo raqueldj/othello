@@ -22,6 +22,7 @@ public class LoadGameWs {
 
 	@EJB
 	LoadGameService loadGameService;
+	@EJB
 	GameService gameService;
 	
 	@GET
@@ -31,7 +32,9 @@ public class LoadGameWs {
 	
 	@GET
 	@Path("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public GameStateDto loadGame(@PathParam("id") int id){
+		System.out.println("===================================id:"+id);
 		return gameService.getState(id);
 	}
 }

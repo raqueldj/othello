@@ -23,7 +23,7 @@ export class DataService {
     }
 
     loadGame(id: number): Promise<GameState> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/load-game/id")
+        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/load-game/"+id)
             .toPromise()
             .then((response) => { return response.json() as GameState});
     }

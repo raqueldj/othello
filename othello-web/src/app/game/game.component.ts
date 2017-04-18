@@ -15,6 +15,7 @@ export class GameComponent {
   @Input() gameState: GameState;
 
   addToken(createToken: CreateToken) {
+    console.log(createToken.x,createToken.y)
     this.selectBox.emit(createToken);
   }
 }
