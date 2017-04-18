@@ -10,12 +10,9 @@ import { DataService } from '../data.service';
   providers: [DataService]
 })
 export class GamesRunningComponent {
-  @Output() gamesRuningOutput: EventEmitter<Game> = new EventEmitter();
   @Output() loadOldGame: EventEmitter<number> = new EventEmitter();
 
-  constructor(private dataService: DataService) {
-    this.dataService.getGamesRunning().then(games => this.games = games);
-  }
+
 
   games: Game[]
 

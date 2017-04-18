@@ -81,6 +81,7 @@ public class GameService {
 	// Verifie si le coup est jouable et le créé si possible (renvoi l'Id du
 	// jeton et si il a été créé)
 	public GameStateDto createToken(CreateTokenDto createTokenDto) {
+		System.out.println("============================================="+createTokenDto);
 		GameStateDto endOfTurnState = new GameStateDto();
 		GameStateDto gameStateDto = getState(createTokenDto.getGameId());
 

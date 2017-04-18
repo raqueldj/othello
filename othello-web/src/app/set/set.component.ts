@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CreateToken, Coordonnees } from '../modele';
+import { CreateToken, Coordonnees,GameState } from '../modele';
 import { DataService } from '../data.service';
 
 
@@ -11,37 +11,29 @@ import { DataService } from '../data.service';
 })
 export class SetComponent {
 
-  @Output() selectBox: EventEmitter<Coordonnees> = new EventEmitter();
+  @Output() selectBox: EventEmitter<CreateToken> = new EventEmitter();
 
-  @Input() tokens: Coordonnees[];
 
-  getCoordonnee(j, i) {
-    this.selectBox.emit({ x: j + 1, y: 8 - i });
+  @Input() gameState: GameState;
+
+  addToken(i, j) {
+    this.selectBox.emit({ x: i + 1, y: 8 - j, gameId: this.gameState.id });
   }
 
-  hasWhiteToken(j, i) {
+  
+/*
+  hasWhiteToken(i, j) {
     //this.tokens.some(token => token.x == i && token.y == j);
-    for (let token of this.tokens) {
-      if (token.x == j && token.y == i)
-        return true;
+    for (i=1;i<=8;i++) {
+      for(j=1;j<=8;j++){
+      if (this.gameState.set[i+1][8-j] == 2)
+        return 2;
+      }
     }
     return false;
   }
+*/
+ 
 
-  /*@Input() token;
-  @Input() idGame : number;
-  @Output() position: EventEmitter<CreateToken> = new EventEmitter();
 
-  constructor(private dataService: DataService) {
-  }
-
-  createToken(x, y, idGame) {
-    this.position.emit({
-      x,
-      y,
-      idGame
-    });
-
-    this.dataService.createToken({ x, y, idGame });
-  }*/
 }
