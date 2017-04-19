@@ -7,25 +7,26 @@ import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class DataService {
+    private baseUrl = "http://localhost:8080/othello-server/api/";
 
     constructor(private http: Http) { }
 
     getUsers(): Promise<User[]> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game")
+        return this.http.get(this.baseUrl + "new-game")
             .toPromise()
             .then((response) => { return response.json() });
     }
 
     getGamesRunning(): Promise<Game[]> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/load-game")
+        return this.http.get(this.baseUrl + "load-game")
             .toPromise()
             .then((response) => { return response.json() });
     }
 
     loadGame(id: number): Promise<GameState> {
-        return this.http.get("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/load-game/"+id)
+        return this.http.get(this.baseUrl + "load-game/" + id)
             .toPromise()
-            .then((response) => { return response.json() as GameState});
+            .then((response) => { return response.json() as GameState });
     }
 
     createGameDS(game: CreateGame): Promise<GameState> {
@@ -33,16 +34,16 @@ export class DataService {
         let options = new RequestOptions({ headers: headers });
         console.log(game);
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/game", game, options)
+        return this.http.post(this.baseUrl + "new-game/game", game, options)
             .toPromise()
-            .then((response) => { return response.json() as GameState});
+            .then((response) => { return response.json() as GameState });
     }
 
     createUserDS(user: CreateUser): Promise<number> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log(user);
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/user", user, options)
+        return this.http.post(this.baseUrl + "new-game/user", user, options)
             .toPromise()
             .then((response) => { return response.json() });
     }
@@ -51,9 +52,9 @@ export class DataService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/game", token, options)
+        return this.http.post(this.baseUrl + "game", token, options)
             .toPromise()
-            .then((response) => { return response.json() as GameState});
+            .then((response) => { return response.json() as GameState });
     }
 
 

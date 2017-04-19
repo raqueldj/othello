@@ -1,0 +1,4 @@
+<jboss-web>
+	<!-- SPECIFIE L'URL RACINE DE L'APPLICATION DANS WILDFLY -->
+	<context-root>othello-server</context-root>
+</jboss-web> 
