@@ -19,6 +19,7 @@ $RECYCLE.BIN/
 
 **/target/
 **/.idea/
+**/*.iml
 
 # =========================
 # Operating System Files
