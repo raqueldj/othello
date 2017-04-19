@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { SetComponent } from '../set/set.component';
 import { TokenComponent } from '../token/token.component';
 import { DataComponent } from '../data/data.component';
-import { Coordonnees,GameState, CreateToken } from '../modele';
+import { Coordonnees,GameState, CreateToken, Replay } from '../modele';
 
 @Component({
   selector: 'app-game',
@@ -11,11 +11,15 @@ import { Coordonnees,GameState, CreateToken } from '../modele';
 })
 export class GameComponent {
   @Output() selectBox: EventEmitter<CreateToken> = new EventEmitter();
+  @Output() restart: EventEmitter<Replay> = new EventEmitter();
 
   @Input() gameState: GameState;
 
   addToken(createToken: CreateToken) {
     console.log(createToken.x,createToken.y)
     this.selectBox.emit(createToken);
+  }
+  replay(replay:Replay){
+    this.restart.emit(replay);
   }
 }

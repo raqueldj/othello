@@ -3,5 +3,5 @@
 </div>
 
 <div>Data
-  <app-data [gameState]='gameState'></app-data>
+  <app-data (restart)='replay($event)' [gameState]='gameState'></app-data>
 </div>

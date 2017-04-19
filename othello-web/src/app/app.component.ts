@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { DataService } from './data.service';
-import { Coordonnees, CreateToken, GameState, CreateUser, User, CreateGame } from './modele';
+import { Coordonnees, CreateToken, GameState, CreateUser, User, CreateGame, Replay } from './modele';
 
 
 @Component({
@@ -55,5 +55,10 @@ export class AppComponent {
   createGame(newGame){
     this.dataService.createGameDS(newGame)
      .then(response => (this.gameState = response));
+  }
+
+  replay(Replay){
+    this.dataService.replay(Replay)
+    .then(response => (this.gameState = response));
   }
 }

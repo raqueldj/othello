@@ -15,8 +15,10 @@ import io.avengers.othello.dao.TokenDao;
 import io.avengers.othello.dao.UserDao;
 import io.avengers.othello.domain.Game;
 import io.avengers.othello.domain.Token;
+import io.avengers.othello.domain.User;
 import io.avengers.othello.dto.CreateTokenDto;
 import io.avengers.othello.dto.GameStateDto;
+import io.avengers.othello.dto.ReplayDto;
 import io.avengers.othello.dto.TokenCreatedDto;
 import io.avengers.othello.dto.UserDto;
 
@@ -477,5 +479,18 @@ System.out.println("=================================================="+createTo
 		}
 		return tokensToSwitch;
 
+	}
+	
+	public GameStateDto replay(ReplayDto replay){
+		User userBlack = udao.findById(replay.getId1()).orElseThrow(NotFoundException::new);
+		User userWhite = udao.findById(replay.getId2()).orElseThrow(NotFoundException::new);
+		Game game = new Game(userBlack, userWhite);
+		gdao.create(game);
+		tdao.create(new Token(true, 4, 4, game));
+		tdao.create(new Token(true, 5, 5, game));
+		tdao.create(new Token(false, 4, 5, game));
+		tdao.create(new Token(false, 5, 4, game));
+		
+		return getState(game.getId());
 	}
 }

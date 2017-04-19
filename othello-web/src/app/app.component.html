@@ -14,6 +14,6 @@
 </div>
 
 <div>Game
-  <app-game (selectBox)='addToken($event)' [gameState]='gameState' *ngIf = "state === 'Game' ">
+  <app-game (selectBox)='addToken($event)' (restart)='replay($event)' [gameState]='gameState' *ngIf = "state === 'Game' ">
   </app-game>
 </div>

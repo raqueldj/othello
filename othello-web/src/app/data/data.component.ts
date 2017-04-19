@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { User, GameState } from '../modele';
+import { User, GameState, Replay } from '../modele';
 
 @Component({
   selector: 'app-data',
@@ -9,8 +9,8 @@ import { User, GameState } from '../modele';
 export class DataComponent {
   @Input() gameState : GameState;
 
-  @Output() replay: EventEmitter<null> = new EventEmitter();
-  onReplay() {
-    this.replay.emit();
+  @Output() restart: EventEmitter<Replay> = new EventEmitter();
+  Replay() {
+    this.restart.emit({id1:this.gameState.playerWhite.id,id2:this.gameState.playerBlack.id});
   }
 }

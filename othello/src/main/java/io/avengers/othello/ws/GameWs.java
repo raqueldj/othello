@@ -10,8 +10,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import io.avengers.othello.dto.CreateGameDto;
 import io.avengers.othello.dto.CreateTokenDto;
 import io.avengers.othello.dto.GameStateDto;
+import io.avengers.othello.dto.ReplayDto;
 import io.avengers.othello.dto.TokenCreatedDto;
 import io.avengers.othello.service.GameService;
 
@@ -41,6 +43,13 @@ public class GameWs {
 		return service.createToken(createTokenDto);
 	}
 	
+	@POST
+	@Path("replay")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public GameStateDto replay(ReplayDto replay){
+		
+		return service.replay(replay);
+	}
 	
 	
 	
