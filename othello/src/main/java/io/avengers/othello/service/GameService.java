@@ -81,12 +81,12 @@ public class GameService {
 	// Verifie si le coup est jouable et le créé si possible (renvoi l'Id du
 	// jeton et si il a été créé)
 	public GameStateDto createToken(CreateTokenDto createTokenDto) {
-		System.out.println("============================================="+createTokenDto);
+		System.out.println("=============================================jeton a creer"+createTokenDto.getX()+createTokenDto.getY());
 		GameStateDto endOfTurnState = new GameStateDto();
 		GameStateDto gameStateDto = getState(createTokenDto.getGameId());
 
 		Game game = gdao.findById(createTokenDto.getGameId()).orElseThrow(NotFoundException::new);
-
+System.out.println("=================================================="+createTokenDto.getX()+createTokenDto.getY()+"is Playable"+isPlayableXY(createTokenDto.getX(), createTokenDto.getY(), gameStateDto));
 		if (isPlayableXY(createTokenDto.getX(), createTokenDto.getY(), gameStateDto)) {
 
 			Token newToken = new Token(gameStateDto.isWhitePlays(), createTokenDto.getX(), createTokenDto.getY(), game);
@@ -145,6 +145,7 @@ public class GameService {
 		checkToken = tdao.findByGame(gameStateDto.getId());
 		for (Token token:checkToken ){
 			if(token.getX()==x && token.getY()==y){
+				System.out.println("======================================jeton deja existant");
 				return false;
 			}
 		}
@@ -165,6 +166,11 @@ public class GameService {
 				for (int k = x + 2; k <= 8; k++) {
 					if (gameStateDto.getSet()[k][y] == playingColor) {
 						playable = true;
+						break;
+					}
+					if (gameStateDto.getSet()[k][y] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -176,6 +182,11 @@ public class GameService {
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x + k][y - k] == playingColor) {
 						playable = true;
+						break;
+					}
+					if (gameStateDto.getSet()[x + k][y - k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -185,7 +196,12 @@ public class GameService {
 
 				for (int k = y - 2; k >= 0; k--) {
 					if (gameStateDto.getSet()[x][k] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[x][k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -196,7 +212,12 @@ public class GameService {
 				int max = Math.min(y - 1, x - 1);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x - k][y - k] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[x - k][y - k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -206,7 +227,12 @@ public class GameService {
 
 				for (int k = x - 2; k >= 0; k--) {
 					if (gameStateDto.getSet()[k][y] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[k][y] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -217,7 +243,12 @@ public class GameService {
 				int max = Math.min(8 - y, x - 1);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x - k][y + k] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[x - k][y + k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -227,7 +258,12 @@ public class GameService {
 
 				for (int k = y + 2; k <= 8; k++) {
 					if (gameStateDto.getSet()[x][k] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[x][k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 			}
@@ -238,7 +274,12 @@ public class GameService {
 				int max = Math.min(8 - y, 8 - x);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x + k][y + k] == playingColor) {
-						playable = true;
+						return true;
+						
+					}
+					if (gameStateDto.getSet()[x + k][y + k] == 0) {
+						playable = false;
+						break;
 					}
 				}
 
@@ -281,6 +322,11 @@ public class GameService {
 		if (x + 2 < 8) {
 			if (gameStateDto.getSet()[x + 1][y] == adverseColor) {
 				for (int k = x + 2; k <= 8; k++) {
+					if (gameStateDto.getSet()[k][y] == 0) {
+						break;
+						
+					}
+				
 					if (gameStateDto.getSet()[k][y] == playingColor) {
 						for (int l = x + 1; l < k; l++) {
 							System.out.println("=======================token to switch : "+l+y);
@@ -296,6 +342,10 @@ public class GameService {
 
 				int max = Math.min(y - 1, 8 - x);
 				for (int k = 2; k <= max; k++) {
+					if (gameStateDto.getSet()[x+k][y-k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x + k][y - k] == playingColor) {
 						for (int l = 1; l < k; l++) {
 							System.out.println("=======================token to switch : "+(x+l)+(y-l));
@@ -311,6 +361,10 @@ public class GameService {
 			if (gameStateDto.getSet()[x][y - 1] == adverseColor) {
 
 				for (int k = y - 2; k >= 0; k--) {
+					if (gameStateDto.getSet()[x][k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x][k] == playingColor) {
 						for (int l = y - 1; l > k; l--) {
 							System.out.println("=======================token to switch : "+x+l);
@@ -327,9 +381,13 @@ public class GameService {
 
 				int max = Math.min(y - 1, x - 1);
 				for (int k = 2; k <= max; k++) {
+					if (gameStateDto.getSet()[x-k][y-k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x - k][y - k] == playingColor) {
 						for (int l = 1; l < k; l++) {
-							System.out.println("=======================token to switch : "+(x-l)+(y-l));
+							System.out.println("=======================token to switch : "+x+" - "+k+"/"+y+" - "+k);
 
 							tokensToSwitch.add(tdao.findByXY(gameId, x - l, y - l));
 						}
@@ -342,6 +400,10 @@ public class GameService {
 			if (gameStateDto.getSet()[x - 1][y] == adverseColor) {
 
 				for (int k = x - 2; k >= 0; k--) {
+					if (gameStateDto.getSet()[k][y] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[k][y] == playingColor) {
 						for (int l = x - 1; l > k; l--) {
 							System.out.println("=======================token to switch : "+l+y);
@@ -358,6 +420,10 @@ public class GameService {
 
 				int max = Math.min(8 - y, x - 1);
 				for (int k = 2; k <= max; k++) {
+					if (gameStateDto.getSet()[x-k][y+k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x - k][y + k] == playingColor) {
 						for (int l = 1; l < k; l++) {
 							System.out.println("=======================token to switch : "+(x-l)+(y+l));
@@ -373,6 +439,10 @@ public class GameService {
 			if (gameStateDto.getSet()[x][y + 1] == adverseColor) {
 
 				for (int k = y + 2; k <= 8; k++) {
+					if (gameStateDto.getSet()[x][k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x][k] == playingColor) {
 						for (int l = y + 1; l < k; l++) {
 							System.out.println("=======================token to switch : "+x+l);
@@ -389,6 +459,10 @@ public class GameService {
 
 				int max = Math.min(8 - y, 8 - x);
 				for (int k = 2; k <= max; k++) {
+					if (gameStateDto.getSet()[x+k][y+k] == 0) {
+						break;
+						
+					}
 					if (gameStateDto.getSet()[x + k][y + k] == playingColor) {
 						for (int l = 1; l < k; l++) {
 							System.out.println("=======================token to switch : "+(x+l)+(y+l));
