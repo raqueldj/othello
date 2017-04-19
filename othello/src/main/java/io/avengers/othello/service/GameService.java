@@ -165,8 +165,8 @@ System.out.println("=================================================="+createTo
 			if (gameStateDto.getSet()[x + 1][y] == adverseColor) {
 				for (int k = x + 2; k <= 8; k++) {
 					if (gameStateDto.getSet()[k][y] == playingColor) {
-						playable = true;
-						break;
+						return true;
+						
 					}
 					if (gameStateDto.getSet()[k][y] == 0) {
 						playable = false;
@@ -181,8 +181,8 @@ System.out.println("=================================================="+createTo
 				int max = Math.min(y - 1, 8 - x);
 				for (int k = 2; k <= max; k++) {
 					if (gameStateDto.getSet()[x + k][y - k] == playingColor) {
-						playable = true;
-						break;
+						return true;
+						
 					}
 					if (gameStateDto.getSet()[x + k][y - k] == 0) {
 						playable = false;

@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { DataService } from './data.service';
-import { Coordonnees, CreateToken, GameState, CreateUser, User } from './modele';
+import { Coordonnees, CreateToken, GameState, CreateUser, User, CreateGame } from './modele';
+
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent {
   gameState: GameState;
   user: CreateUser;
   users: User[];
+  newGame: CreateGame;
 
   addToken(createToken: CreateToken) {
     console.log(`yipiyeah ${createToken.x} ${createToken.y}`);
@@ -47,5 +49,11 @@ export class AppComponent {
       .then(Response => {
         this.users.push({ id: Response, name: user.name, passWord: user.passWord });
       });
+  }
+
+
+  createGame(newGame){
+    this.dataService.createGameDS(newGame)
+     .then(response => (this.gameState = response));
   }
 }
