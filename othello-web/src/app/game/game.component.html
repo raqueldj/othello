@@ -2,7 +2,6 @@
   <app-set (selectBox)='addToken($event)' [gameState]='gameState'></app-set>
 </div>
 
-
 <div>Data
-  <app-data></app-data>
+  <app-data [gameState]='gameState'></app-data>
 </div>

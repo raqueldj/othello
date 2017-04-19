@@ -1,0 +1,22 @@
+div.players{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+
+div.player{
+    border:1px solid black;
+    display: flex;
+    flex-direction: row;
+    height: 4em;
+    width: 7em;
+    align-items: center;
+
+    background-color: lightcyan;
+}
+
+div.name{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}

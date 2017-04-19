@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { User, GameState } from '../modele';
 
 @Component({
   selector: 'app-data',
@@ -6,10 +7,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./data.component.css']
 })
 export class DataComponent {
-  @Input() player1;
-  @Input() player2;
+  @Input() gameState : GameState;
 
   @Output() replay: EventEmitter<null> = new EventEmitter();
+
+  //playerWhite = this.gameState.WhiteUser.name;
+
   onReplay() {
     this.replay.emit();
   }
