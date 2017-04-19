@@ -10,9 +10,6 @@ export class DataComponent {
   @Input() gameState : GameState;
 
   @Output() replay: EventEmitter<null> = new EventEmitter();
-
-  //playerWhite = this.gameState.WhiteUser.name;
-
   onReplay() {
     this.replay.emit();
   }

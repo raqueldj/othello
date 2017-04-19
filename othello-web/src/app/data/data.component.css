@@ -15,8 +15,28 @@ div.player{
     background-color: lightcyan;
 }
 
+div.playerRed  {
+    border:2px solid red;
+}
+
 div.name{
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+#whiteToken{
+    height: 3em; 
+    width: 3em; 
+    border:1px solid black;
+    background-color:white;
+    border-radius: 50%;
+}
+
+#blackToken{
+    height: 3em; 
+    width: 3em; 
+    border:1px solid black;
+    background-color:black;
+    border-radius: 50%;
 }
