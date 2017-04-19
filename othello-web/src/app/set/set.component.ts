@@ -21,18 +21,7 @@ export class SetComponent {
   }
 
   
-/*
-  hasWhiteToken(i, j) {
-    //this.tokens.some(token => token.x == i && token.y == j);
-    for (i=1;i<=8;i++) {
-      for(j=1;j<=8;j++){
-      if (this.gameState.set[i+1][8-j] == 2)
-        return 2;
-      }
-    }
-    return false;
-  }
-*/
+
  
 
 

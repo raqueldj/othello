@@ -1,3 +1,4 @@
-<select (input)='onSelect(v.value)' #v>
+<select  (input)='onSelect(v.value)' #v>
+  <option  disabled selected>Select Player:</option>
   <option *ngFor="let user of users;" value="{{user.id}}">{{user.name}}</option>
 </select>

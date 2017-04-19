@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CreateUser, User, GameState } from '../modele';
+import { CreateUser, User, GameState,CreateGame } from '../modele';
 import { UsersListComponent } from '../users-list/users-list.component';
 import { DataService } from '../data.service';
 
@@ -14,38 +14,24 @@ export class UsersComponent {
   @Input() newUsers: User[];
 
   @Output() createUser: EventEmitter<CreateUser> = new EventEmitter();
-  @Output() createNewGame: EventEmitter<null> = new EventEmitter();
+  @Output() createNewGame: EventEmitter<CreateGame> = new EventEmitter();
 
   idWhite: number = 0;
   idBlack: number = 0;
   idCreate: number;
   users: User[];
 
-  constructor(private dataService: DataService) {
-    /*this.dataService.getUsers().then(users => {
-       this.idBlack = users[0].id;
-       this.idWhite = users[0].id;
-       this.users = users;
-     });*/
-  }
+  
 
   addUser(name, passWord) {
     this.createUser.emit({
       name,
       passWord
     });
-    /*console.log(name);
-    console.log(passWord);
-    this.dataService.createUserDS({ name, passWord })
-      .then(Response => {
-        this.idCreate = Response;
-        this.users.push({ id: Response, name: name, passWord: passWord });
-        console.log(this.idCreate);
-      });*/
+   
   }
 
   createGame(passWordWhite, passWordBlack) {
-    this.dataService.createGameDS({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
-    this.createNewGame.emit();
+    this.createNewGame.emit({ idWhite: this.idWhite, idBlack: this.idBlack, passWordWhite, passWordBlack });
   }
 }
