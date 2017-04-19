@@ -2,21 +2,17 @@
 
 <div>Menu
   <app-menu *ngIf = "state == 'Menu'" (newGame)="state='Users'" (loadGame)="state='GamesRunning'"></app-menu>
- <!-- <app-menu *ngIf = "state == 'Menu'" (newGame)="state='Users'" (loadGame)="state='GamesRunning'"></app-menu>-->
 </div>
 
 <div>Users List
   <app-users *ngIf = "state == 'Users'" (createNewGame)="state='Game'"></app-users>
- <!--  <app-users *ngIf = "state == 'Users'" (createNewGame)="state='Game'"  ></app-users>-->
 </div>
 
 <div>Games running List
   <app-games-running (loadOldGame)='loadGame($event)' *ngIf = "state == 'GamesRunning'" (loadOldGame)="state='Game'"></app-games-running>
   Selected: {{id}}
-  <!--<app-games-running *ngIf = "state == 'GamesRunning'" (loadOldGame)="state='Game'"></app-games-running>-->
 </div>
 
 <div>Game
-  <!--<app-game *ngIf = "state == 'Game'"></app-game>-->
   <app-game (selectBox)='addToken($event)' [gameState]='gameState' *ngIf = "state == 'Game'"></app-game>
 </div>
