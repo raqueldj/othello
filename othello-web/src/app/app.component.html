@@ -5,7 +5,7 @@
 </div>
 
 <div>Users List
-  <app-users *ngIf = "state == 'Users'" (createNewGame)="state='Game'"></app-users>
+  <app-users (createUser)='createUser($event)' *ngIf = "state == 'Users'" (createNewGame)="state='Game'" [newUsers]='users'></app-users>
 </div>
 
 <div>Games running List
@@ -14,5 +14,5 @@
 </div>
 
 <div>Game
-  <app-game (selectBox)='addToken($event)' [gameState]='gameState' *ngIf = "state == 'Game'"></app-game>
+  <app-game (selectBox)='addToken($event)' [gameState]='gameState' *ngIf = "state === 'Game' && gameState"></app-game>
 </div>

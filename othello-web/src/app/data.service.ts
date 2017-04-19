@@ -28,14 +28,14 @@ export class DataService {
             .then((response) => { return response.json() as GameState});
     }
 
-    createGameDS(game: CreateGame): Promise<CreateGame> {
+    createGameDS(game: CreateGame): Promise<GameState> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log(game);
 
         return this.http.post("http://localhost:8080/othello-0.0.1-SNAPSHOT/api/new-game/game", game, options)
             .toPromise()
-            .then((response) => { return response.json() });
+            .then((response) => { return response.json() as GameState});
     }
 
     createUserDS(user: CreateUser): Promise<number> {

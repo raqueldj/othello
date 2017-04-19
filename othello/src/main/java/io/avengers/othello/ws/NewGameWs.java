@@ -12,7 +12,9 @@ import javax.ws.rs.core.MediaType;
 
 import io.avengers.othello.dto.CreateGameDto;
 import io.avengers.othello.dto.CreateUserDto;
+import io.avengers.othello.dto.GameStateDto;
 import io.avengers.othello.dto.UserDto;
+import io.avengers.othello.service.GameService;
 import io.avengers.othello.service.NewGameService;
 
 @Path("new-game")
@@ -22,6 +24,8 @@ public class NewGameWs {
 
 	@EJB
 	NewGameService service;
+	@EJB
+	GameService gameService;
 	
 	@GET
 	public List<UserDto> findAllUser(){
@@ -38,8 +42,9 @@ public class NewGameWs {
 	@POST
 	@Path("game")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public int createGame(CreateGameDto gameDto){
-		return service.createGame(gameDto);
-
+	public GameStateDto createGame(CreateGameDto gameDto){
+		
+		int id = service.createGame(gameDto);
+		return gameService.getState(id);
 	}
 }
